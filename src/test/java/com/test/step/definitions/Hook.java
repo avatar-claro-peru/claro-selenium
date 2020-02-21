@@ -25,7 +25,8 @@ public class Hook {
 		//driver = new FirefoxDriver();
 		
 		// Chrome
-		System.setProperty("webdriver.chrome.driver","C:\\Users\\desarrollo\\git\\devops\\Cucum\\src\\test\\resources\\files\\software\\windows\\chromedriver.exe");	
+//		System.setProperty("webdriver.chrome.driver","C:\\Users\\desarrollo\\git\\devops\\Cucum\\src\\test\\resources\\files\\software\\windows\\chromedriver.exe");	
+		System.setProperty("webdriver.chrome.driver","X:\\Unidad_X\\eclipseSTS\\workspace_final\\claro-selenium\\src\\test\\resources\\files\\software\\windows\\chromedriver.exe");
 		driver = new ChromeDriver();
 		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 	}
@@ -49,10 +50,10 @@ public class Hook {
 		driver = driverAndroid;
 	}
 	
-	@After
-	public void browserClose() {
-		driver.close();
-	}
+//	@After
+//	public void browserClose() {
+//		driver.close();
+//	}
 
 	public static WebDriver getDriver() {
 		return driver;

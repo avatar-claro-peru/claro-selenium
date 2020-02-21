@@ -1,7 +1,5 @@
 package com.test.step.definitions;
 
-import java.util.concurrent.TimeUnit;
-
 import org.openqa.selenium.WebDriver;
 
 import cucumber.api.java.en.Given;
