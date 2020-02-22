@@ -45,6 +45,7 @@ public class SisactAvatarSteps {
 	// REGISTRAR CLIENTE
 	@And("^hace clic en boton Agregar Cliente$")
 	public void hace_clic_en_boton_Agregar_Cliente() throws Throwable {
+		Thread.sleep(4000);
 		SisacAvatarLogic.clickAddClientButton();
 	}
 
@@ -57,10 +58,21 @@ public class SisactAvatarSteps {
 	public void hace_clic_en_boton_Guardar() throws Throwable {
 		SisacAvatarLogic.clickSaveButton();
 	}
+	
+	@And("^confirmar registro$")
+	public void confirmar_registro() throws Throwable {
+		SisacAvatarLogic.clickYesButton();
+	}
 	//
 
 	@Then("^se realiza la operacion correctamente$")
 	public void se_realiza_la_operacion_correctamente() throws Throwable {
+		Thread.sleep(4000);
+		SisacAvatarLogic.successfulLogin();
+	}
+	
+	@Then("^Se guardo$")
+	public void Se_guardo() throws Throwable {
 		Thread.sleep(4000);
 		SisacAvatarLogic.successfulLogin();
 	}

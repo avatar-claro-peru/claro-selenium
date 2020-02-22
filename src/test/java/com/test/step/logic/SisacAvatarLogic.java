@@ -75,20 +75,14 @@ public class SisacAvatarLogic {
 	public static void clickSaveButton() throws InterruptedException {
 		WebElement button = driver.findElement(By.id("btn_guardar"));
 		button.click();
-//		driver.findElement(By.xpath("//button[text()='Si']")).click();
-//		driver.findElement(By.xpath("//*[@ class = 'sa-confirm-button-container'] // * [text () = 'Si']")).click();
-//		WebElement button2 = driver.findElement(By.xpath("//*[@class = 'sa-confirm-button-container']")).findElement(By.xpath("//*[@class = 'confirm']"));
-//		button2.findElement(By.xpath("//button[text()='Si']")).click();
-		
-		List<WebElement> allButt = driver.findElements(By.tagName("button"));
-		for (WebElement w : allButt)
-		{
-		    if (w.getText().matches("test"))
-		    {
-		        w.click();
-		        break;
-		    }
-		}
+		Thread.sleep(4000);
+//		WebElement button2 = driver.findElement(By.xpath("//*[@class = 'sa-confirm-button-container']"));
+//		button2.findElement(By.xpath("//button[@class ='confirm']")).click();
+	}
+	
+	public static void clickYesButton() throws InterruptedException {
+		WebElement button = driver.findElement(By.xpath("//*[@class = 'sa-confirm-button-container']"));
+		button.findElement(By.xpath("//button[@class ='confirm']")).click();
 	}
 
 	//

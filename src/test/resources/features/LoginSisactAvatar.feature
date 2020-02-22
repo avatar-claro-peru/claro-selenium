@@ -9,9 +9,15 @@ Feature: Iniciar sesion en Sisac Avatar
  			| administrador | admin |
  		And hace clic en boton ingresar
  		And selecciona la opcion Clientes
+ 		And ingresa dni del cliente
+ 			| 474984822 |
+ 		And hace clic en boton buscar
+ 		Then se realiza la operacion correctamente
  		
+ 	Scenario: Registrar cliente
  		Given hace clic en boton Agregar Cliente
  		And rellena el formulario de cliente
- 			| pedro carranza | 47498487 | jLinares@gmail.com |
+ 			| miguel llamocca | 47498481 | mllamocca@avatar-global.com |
  		And hace clic en boton Guardar
- 		Then se realiza la operacion correctamente
+ 		And confirmar registro
+ 		Then Se guardo
