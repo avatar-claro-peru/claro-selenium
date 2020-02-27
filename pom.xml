@@ -1,94 +1,40 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-  <modelVersion>4.0.0</modelVersion>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
 
-  <groupId>test</groupId>
-  <artifactId>Cucum</artifactId>
-  <version>0.0.1-SNAPSHOT</version>
-  <packaging>jar</packaging>
+	<parent>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-starter-parent</artifactId>
+		<version>1.5.4.RELEASE</version>
+		<relativePath />
+	</parent>
 
-  <name>Cucum</name>
-  <url>http://maven.apache.org</url>
+	<groupId>claro-selenium</groupId>
+	<artifactId>claro-selenium</artifactId>
+	<version>1.0</version>
+	<packaging>pom</packaging>
 
-  <properties>
-    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-  </properties>
+	<developers>
+		<developer>
+			<name>Miguel Llamocca</name>
+			<email>mllamocca@avatar-global.com</email>
+			<roles>
+				<role>Desarrollador</role>
+			</roles>
+			<organization>avatar-global</organization>
+		</developer>
+	</developers>
 
-  <build>
-  	<plugins>
-  		<plugin>
-          <groupId>org.apache.maven.plugins</groupId>
-          <artifactId>maven-compiler-plugin</artifactId>
-          <version>3.8.1</version>
-          <configuration>
-        <classesDirectory>src</classesDirectory>
-        <excludes>
-            <exclude>main</exclude>
-        </excludes>
-   	 	</configuration>
-        </plugin>
-        
-        <plugin>
-          <groupId>org.apache.maven.plugins</groupId>
-          <artifactId>maven-surefire-plugin</artifactId>
-          <version>3.0.0-M4</version>
-          <configuration>
-          	<includes>
-          		<exclude>**/*Runner.java</exclude>
-          	</includes>
-       	  <testFailureIgnore>true</testFailureIgnore>
-          </configuration>
-        </plugin>
-        
-  		<plugin>
-          <groupId>net.masterthought</groupId>
-		  <artifactId>maven-cucumber-reporting</artifactId>
-		  <version>5.0.0</version>
-          <executions>
-              <execution>
-                  <id>execution</id>
-                  <phase>verify</phase>
-                  <goals>
-                      <goal>generate</goal>
-                  </goals>
-                  <configuration>
-                       <projectName>ClaroTest</projectName>
-                       <!-- optional, per documentation set this to "true" to bypass generation of Cucumber Reports entirely, defaults to false if not specified -->
-                       <skip>false</skip>
-                       <!-- output directory for the generated report -->
-                       <outputDirectory>${project.build.directory}</outputDirectory>
-                       <!-- optional, defaults to outputDirectory if not specified -->
-                       <inputDirectory>${project.build.directory}/cucumber-reports</inputDirectory>
-                       <jsonFiles>
-                           <!-- supports wildcard or name pattern -->
-                           <param>**/*.json</param>
-                       </jsonFiles>
-                       <!-- optional, defaults to outputDirectory if not specified -->
-                       <classificationDirectory>${project.build.directory}/cucumber-reports</classificationDirectory>
-                       <classificationFiles>
-                               <!-- supports wildcard or name pattern -->
-                               <param>sample.properties</param>
-                               <param>other.properties</param>
-                       </classificationFiles>
-                       <parallelTesting>false</parallelTesting>
-                       <!-- optional, set true to group features by its Ids -->
-                       <mergeFeaturesById>false</mergeFeaturesById>
-                       <!-- optional, set true to get a final report with latest results of the same test from different test runs -->
-                       <mergeFeaturesWithRetest>false</mergeFeaturesWithRetest>
-                       <!-- optional, set true to fail build on test failures -->
-                       <checkBuildResult>false</checkBuildResult>
-                   </configuration>
-              </execution>
-          </executions>
-        </plugin>
-  	</plugins>
-  
-  
-  
-  </build>
-  <dependencies>
-    
-    <!-- https://mvnrepository.com/artifact/org.apache.commons/commons-lang3 -->
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<java.version>1.7</java.version>
+		<maven.version>3.6.1</maven.version>
+	</properties>
+
+	<dependencies>
+		
+	<!-- https://mvnrepository.com/artifact/org.apache.commons/commons-lang3 -->
 	<dependency>
 	    <groupId>org.apache.commons</groupId>
 	    <artifactId>commons-lang3</artifactId>
@@ -164,11 +110,38 @@
 	</dependency>
 	
 	<!-- https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-server -->
-	<dependency>
-	    <groupId>org.seleniumhq.selenium</groupId>
-	    <artifactId>selenium-server</artifactId>
-	    <version>3.141.59</version>
-	</dependency>    
-  </dependencies>
-    
+<!-- 	<dependency> -->
+<!-- 	    <groupId>org.seleniumhq.selenium</groupId> -->
+<!-- 	    <artifactId>selenium-server</artifactId> -->
+<!-- 	    <version>3.141.59</version> -->
+<!-- 	</dependency>   -->
+
+	</dependencies>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+				<configuration>
+					<skip>true</skip>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>${maven.version}</version>
+				<configuration>
+					<source>${java.version}</source>
+					<target>${java.version}</target>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+
+	<modules>
+		<module>claro-selenium-sisact</module>
+		<module>claro-selenium-consultarstockonline</module>
+	</modules>
+
 </project>
