@@ -26,7 +26,7 @@ public class Hook {
 		
 		// Chrome
 //		System.setProperty("webdriver.chrome.driver","C:\\Users\\desarrollo\\git\\devops\\Cucum\\src\\test\\resources\\files\\software\\windows\\chromedriver.exe");	
-		System.setProperty("webdriver.chrome.driver","X:\\Unidad_X\\workspace_avatar\\rest\\claro-selenium\\claro-selenium-sisact\\src\\test\\resources\\files\\software\\windows\\chromedriver.exe");
+		System.setProperty("webdriver.chrome.driver","X:\\Unidad_X\\eclipseSTS\\workspace_final\\claro-selenium\\claro-selenium-sisact\\src\\test\\resources\\files\\software\\windows\\chromedriver.exe");
 		driver = new ChromeDriver();
 		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 	}

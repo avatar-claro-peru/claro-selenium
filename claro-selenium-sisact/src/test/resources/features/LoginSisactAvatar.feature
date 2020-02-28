@@ -4,7 +4,7 @@ Feature: Iniciar sesion en Sisac Avatar
 	Como usuario Avatar quiero loguearme para realizar unas pruebas automatizadas
 	
 	Scenario: Buscar cliente
-		Given el usuario ingreso a la pagina "http://localhost:9090/sisactAvatar/login.htm"
+		Given el usuario ingreso a la pagina "http://localhost:9080/sisactAvatar/login.htm"
  		When ingresa credenciales en login
  			| administrador | admin |
  		And hace clic en boton ingresar
