@@ -142,6 +142,7 @@
 	<modules>
 		<module>claro-selenium-sisact</module>
 		<module>claro-selenium-consultarstockonline</module>
+		<module>claro-selenium-tiendavirtual</module>
 	</modules>
 
 </project>
