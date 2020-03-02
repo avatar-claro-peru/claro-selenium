@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" "http://www.ibatis.com/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="UsuarioPerfil">
+	
+    <!-- se utiliza un alias para definir la clase Domain. -->
+	<typeAlias alias="usuarioPerfil" type="pe.com.claro.website.seguridad.domain.UsuarioPerfil"/>
+	
+	<insert id="insert" parameterClass="usuarioPerfil"> 
+		INSERT INTO
+		usuario_Perfil (ID, usuario_id, perfil_id)
+		VALUES ( NEXTVAL('usuario_perfil_id_seq'),#usuario.id#,#perfil.id#)
+	</insert>
+	
+	<delete id="deleteByUsuarioId"  parameterClass="java.lang.Integer">
+		DELETE
+		FROM
+		usuario_Perfil
+		WHERE
+		usuario_id = #value#
+	</delete>
+	
+</sqlMap>

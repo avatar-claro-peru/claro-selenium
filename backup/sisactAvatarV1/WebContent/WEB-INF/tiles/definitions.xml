@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tiles-definitions PUBLIC 
+	"-//Apache Software Foundation//DTD Tiles Configuration 1.1//EN" 
+	"http://jakarta.apache.org/struts/dtds/tiles-config_1_1.dtd">
+<tiles-definitions>
+
+    <!--/////////////////////////////////////////////////////////////////////-->
+    <!--                    TEMPLATE DEFINITIONS                             -->
+    <!--/////////////////////////////////////////////////////////////////////-->
+	<definition name="adminTemplate" page="/WEB-INF/jsp/estructura/plantillas/mainTemplate.jsp">
+		<put name="header" value="/WEB-INF/jsp/estructura/header.jsp" type="page"/>
+		<put name="menu" value="/WEB-INF/jsp/estructura/menu.jsp" type="page"/>
+		<put name="footer" value="/WEB-INF/jsp/estructura/footer.jsp" type="page"/>
+	</definition>
+	
+	<definition name="popupTemplate" page="/WEB-INF/jsp/estructura/plantillas/popupTemplate.jsp">
+		<put name="header" value="/WEB-INF/jsp/estructura/header.jsp" type="page"/>
+		<put name="menu" value="/WEB-INF/jsp/estructura/menu.jsp" type="page"/>
+		<put name="footer" value="/WEB-INF/jsp/estructura/footer.jsp" type="page"/>
+	</definition>
+
+	<definition name="successMainTemplate" page="/WEB-INF/jsp/estructura/plantillas/successTemplate.jsp">
+		<put name="header" value="/WEB-INF/jsp/estructura/header.jsp" type="page"/>
+		<put name="menu" value="/WEB-INF/jsp/estructura/menu.jsp" type="page"/>
+		<put name="footer" value="/WEB-INF/jsp/estructura/footer.jsp" type="page"/>
+	</definition>
+	
+	<definition name="successPopUpTemplate" page="/WEB-INF/jsp/estructura/plantillas/successPopUpTemplate.jsp">
+	</definition>
+	
+	<definition name="loginView" page="/WEB-INF/jsp/login.jsp"/>
+	
+	<definition name="inicioView" extends="adminTemplate">
+		<put name="content" value="/WEB-INF/jsp/inicio.jsp" type="page"/>		
+	</definition>	
+	
+
+</tiles-definitions>

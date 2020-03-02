@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" "http://www.ibatis.com/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="TopeConsumo">
+	
+    <!-- se utiliza un alias para definir la clase Domain. -->
+	<typeAlias alias="topeConsumo" type="pe.com.claro.website.app.domain.TopeConsumo"/>
+	
+	<!-- para traer una lista de topes de consumo  -->
+	<resultMap id="resultadoTopeConsumo" class="topeConsumo">
+		<result property="id" column="id" />
+	    <result property="topeEstado" column="topeEstado" />
+	    <result property="servCodigo" column="servCodigo" />
+	    <result property="servDesc" column="servDesc" />
+	</resultMap>
+	
+	<resultMap id="resultadoTopeConsumo2" class="topeConsumo">
+		<result property="id" column="id" />
+	    <result property="topeEstado" column="topeEstado" />
+	    <result property="servCodigo" column="servCodigo" />
+	    <result property="servDesc" column="servDesc" />
+	    <result property="listaPlanesAsociados" column="id" select="TipoPlan.listarByTopeConsumoID"/>
+	</resultMap>
+		
+	<!--  PARA LOS GENERICOS INICIO -->		
+ 
+ 	<select id="list" parameterClass="topeConsumo"  resultMap="resultadoTopeConsumo">
+ 		select * from topeConsumo
+ 	</select>
+ 	
+	<insert id="insert" parameterClass="topeConsumo">
+		INSERT INTO
+		topeConsumo 
+		(id,topeEstado,servCodigo,servDesc) 
+		VALUES
+		(NEXTVAL('topeconsumo_id_seq'),#topeEstado#,#servCodigo#,#servDesc#)
+	</insert>
+	
+	<select id="selectByID" resultMap="resultadoTopeConsumo2">
+ 		select * from topeConsumo where id=#id#
+ 	</select>
+ 	
+ 	<update id="update" parameterClass="topeConsumo">
+		UPDATE
+		topeConsumo
+		SET
+		topeEstado = #topeEstado#,
+		servCodigo = #servCodigo#,
+		servDesc = #servDesc#
+		WHERE
+		id = #id#
+	</update>
+	
+	<delete id="delete">
+		DELETE
+		FROM
+		topeConsumo
+		WHERE
+		id = #id#
+	</delete>
+	<!--  PARA LOS GENERICOS FIN -->
+	
+	<select id="listForTipoNumero" parameterClass="topeConsumo"  resultMap="resultadoTopeConsumo">
+ 		select * from topeConsumo where servCodigo = #servCodigo#
+ 	</select>
+ 	
+	<select id="selectTipoPLanTopeConsumo" parameterClass="java.lang.Integer" resultMap="resultadoTopeConsumo">
+		select * from topeConsumo where id in (select topeConsumo_ID from tipoPlanTopeConsumo where tipoPlan_ID = #value# )
+	</select>
+		 		
+</sqlMap>

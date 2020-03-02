@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions name="BSS_ClaroPriceLoad"
+	targetNamespace="http://claro.com.pe/esb/BSS_ClaroPriceLoad/v1/"
+	xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:client="http://claro.com.pe/esb/BSS_ClaroPriceLoad/v1/"
+	xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+	xmlns:xsd1="http://claro.com.pe/esb/data/bss/generico/claroFault/v1/"
+	xmlns:xsd2="http://claro.com.pe/esb/data/bss/checkPriceProcessStatus"
+	xmlns:xsd3="http://claro.com.pe/esb/data/bss/executePriceProcess"
+	xmlns:he="http://claro.com.pe/esb/data/bss/generico/claroGenericHeader/v1/">
+	<wsdl:types>
+		<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+			<xsd:import namespace="http://claro.com.pe/esb/data/bss/generico/claroFault/v1/"
+				schemaLocation="../../xsd/OAGIS/9.0/Overlays/Claro2.1/ClaroFault_v1.xsd">
+			</xsd:import>
+			<xsd:import namespace="http://claro.com.pe/esb/data/bss/checkPriceProcessStatus"
+				schemaLocation="../../xsd/OAGIS/9.0/Overlays/Claro2.1/checkPriceProcess.xsd">
+			</xsd:import>
+			<xsd:import namespace="http://claro.com.pe/esb/data/bss/executePriceProcess"
+				schemaLocation="../../xsd/OAGIS/9.0/Overlays/Claro2.1/executePriceProcess.xsd">
+			</xsd:import>
+			<xsd:import
+				namespace="http://claro.com.pe/esb/data/bss/generico/claroGenericHeader/v1/"
+				schemaLocation="../../xsd/OAGIS/9.0/Overlays/Claro2.1/ClaroGenericHeaders_v1.xsd" />
+		</xsd:schema>
+	</wsdl:types>
+
+	<wsdl:message name="checkPriceProcessRequestMessage">
+		<wsdl:part element="xsd2:checkPriceProcessRequest" name="checkPriceProcessRequest" />
+	</wsdl:message>
+
+	<wsdl:message name="checkPriceProcessResponseMessage">
+		<wsdl:part element="xsd2:checkPriceProcessResponse" name="checkPriceProcessResponse" />
+	</wsdl:message>
+
+	<wsdl:message name="executePriceProcessRequestMessage">
+		<wsdl:part name="executePriceProcessRequest" element="xsd3:executePriceProcessRequest">
+		</wsdl:part>
+	</wsdl:message>
+
+	<wsdl:message name="executePriceProcessResponseMessage">
+		<wsdl:part name="executePriceProcessResponse" element="xsd3:executePriceProcessResponse">
+		</wsdl:part>
+	</wsdl:message>
+
+	<wsdl:message name="claroFault">
+		<wsdl:part name="claroFault" element="xsd1:claroFault" />
+	</wsdl:message>
+
+	<wsdl:message name="headerRequest">
+		<wsdl:part name="headerRequest" element="he:headerRequest" />
+	</wsdl:message>
+	<wsdl:message name="headerResponse">
+		<wsdl:part name="headerResponse" element="he:headerResponse" />
+	</wsdl:message>
+
+	<wsdl:portType name="BSS_ClaroPriceLoad">
+		<wsdl:operation name="checkPriceProcess">
+			<wsdl:input message="client:checkPriceProcessRequestMessage" />
+			<wsdl:output message="client:checkPriceProcessResponseMessage" />
+			<wsdl:fault name="claroFault" message="client:claroFault"></wsdl:fault>
+		</wsdl:operation>
+		<wsdl:operation name="executePriceProcess">
+			<wsdl:input message="client:executePriceProcessRequestMessage"></wsdl:input>
+			<wsdl:output message="client:executePriceProcessResponseMessage"></wsdl:output>
+			<wsdl:fault name="claroFault" message="client:claroFault"></wsdl:fault>
+		</wsdl:operation>
+	</wsdl:portType>
+
+	<wsdl:binding name="BSS_ClaroPriceLoadSOAP" type="client:BSS_ClaroPriceLoad">
+		<soap:binding style="document"
+			transport="http://schemas.xmlsoap.org/soap/http" />
+		<wsdl:operation name="checkPriceProcess">
+			<soap:operation
+				soapAction="http://claro.com.pe/esb/BSS_ClaroPriceLoad/v1/checkPriceProcess" />
+			<wsdl:input>
+				<soap:header message="client:headerRequest" part="headerRequest"
+					use="literal" />
+				<soap:body use="literal" parts="checkPriceProcessRequest" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap:header message="client:headerResponse" part="headerResponse"
+					use="literal" />
+				<soap:body use="literal" parts="checkPriceProcessResponse" />
+			</wsdl:output>
+			<wsdl:fault name="claroFault">
+				<soap:fault name="claroFault" use="literal" />
+			</wsdl:fault>
+		</wsdl:operation>
+		<wsdl:operation name="executePriceProcess">
+			<soap:operation
+				soapAction="http://claro.com.pe/esb/BSS_ClaroPriceLoad/v1/executePriceProcess" />
+			<wsdl:input>
+				<soap:header message="client:headerRequest" part="headerRequest"
+					use="literal" />
+				<soap:body use="literal" parts="executePriceProcessRequest" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap:header message="client:headerResponse" part="headerResponse"
+					use="literal" />
+				<soap:body use="literal" parts="executePriceProcessResponse" />
+			</wsdl:output>
+			<wsdl:fault name="claroFault">
+				<soap:fault name="claroFault" use="literal" />
+			</wsdl:fault>
+		</wsdl:operation>
+	</wsdl:binding>
+	<wsdl:service name="BSS_ClaroPriceLoad_v1">
+		<wsdl:port binding="client:BSS_ClaroPriceLoadSOAP" name="BSS_ClaroPriceLoadSOAP">
+			<soap:address
+				location="http://localhost/webapp/wcs/services/BSS_ClaroPriceLoadSOAP" />
+		</wsdl:port>
+	</wsdl:service>
+</wsdl:definitions>

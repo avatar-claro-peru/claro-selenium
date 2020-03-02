@@ -1,0 +1,333 @@
+
+/*tabla para titulo principal*/
+table.mainTitle {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 18px;
+	font-weight: bold;
+	width: 750px;	
+}
+
+table.secondaryTitle {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 14px;
+	font-weight: bold;
+	width: 750px;
+	color: #660000;	
+}
+
+/*marco para botones principales*/
+table.mainButtons {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 15px;
+	width: 92%;
+	text-align: right;	
+}
+
+
+/*tabla para titulos de seccion*/
+table.detailTitle{
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 11px;
+	border: 1px solid Black;
+	background-color: Gray;
+	color: White;
+	font-weight: bold;
+	padding: 2px 2px 2px 5px;
+	width: 92%;		
+}
+
+/*tabla para titulos de los mensajes*/
+table.titleMessage{
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 11px;
+	border: 1px solid Black;
+	background-color: #FFFFFF;
+	color: green;
+	font-weight: bold;
+	padding: 2px 2px 2px 5px;
+	width: 92%;		
+}
+
+/*tabla para titulos de los mensajes Error*/
+table.titleMessageError{
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 11px;
+	border: 1px solid Black;
+	background-color: #FFFFFF;
+	color: red;
+	font-weight: bold;
+	padding: 2px 2px 2px 5px;
+	width: 92%;		
+}
+
+
+
+/*tabla para titulos de seccion*/
+table.detailTitlePrint{
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 11px;
+	border: 1px solid Black;
+	background-color: Gray;
+	color: White;
+	font-weight: bold;
+	padding: 2px 2px 2px 5px;
+	width: 650px;		
+}
+/*tabla para titulos de seccion*/
+table.detailTitleFull{
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 11px;
+	border: 1px solid Black;
+	background-color: Gray;
+	color: White;
+	font-weight: bold;
+	padding: 2px 2px 2px 5px;
+	width: 100%;		
+}
+
+/*marco general*/
+table.updateLayout {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	color: Black;
+	font-size: 11px;	
+	text-decoration: none;
+	font-weight: normal;
+	border: 2px solid;
+	background-color: #F2F2F7;
+	padding: 4px 15px 4px 15px;
+	width: 375px;
+	text-align: left;
+}
+
+/*marco general*/
+table.searchLayout{
+font-family: Verdana, Arial, Helvetica, sans-serif;
+	color: Black;
+	font-size: 11px;	
+	text-decoration: none;
+	font-weight: normal;
+	border: 2px solid;
+	background-color: #F2F2F7;
+	padding: 4px 15px 4px 15px;
+	width: 92%;
+	align: center;
+}
+
+/*marco pequenio*/
+table.viewContractualLayout{
+font-family: Verdana, Arial, Helvetica, sans-serif;
+	color: Black;
+	font-size: 11px;	
+	text-decoration: none;
+	font-weight: normal;
+	border: 2px solid;
+	background-color: #F2F2F7;
+	padding: 4px 15px 4px 15px;
+	width: 92%;
+	align: center;
+}
+
+/*BUTTON*/
+
+input.button.orange{
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+  	background: #E6E6FA;
+  	border: 1px ridge #E6E6FA;
+  	color: #000000;
+  	font-size: 12px;
+  	cursor:hand;
+    font-weight: bold;
+ }
+ 
+input.button.grayDisabled {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+ 	background: #666666;
+ 	border: 1px ridge #CCCCCC;
+ 	color: #CCCCCC;
+ 	font-size: 10px;
+  	cursor:default;
+    font-weight: bold;
+}
+
+/*recuadros del calendario*/
+input.calendarDay {
+  	background-color: #FFFFFF;
+  	color: #000066;
+  	font-family: Verdana;
+  	font-size: 8pt;
+  	font-weight: bold;
+  	border: 1 solid #FFFFFF;
+  	cursor:hand
+}
+
+input.day {
+  	background-color: #FFFFFF;
+  	color: #000066;
+  	font-family: Verdana;
+  	font-size: 8pt;
+  	font-weight: bold;
+  	border: 1 solid #FFFFFF;
+  	cursor:hand
+ }
+
+td.subTitle {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+ 	font-size: 11px;
+   font-weight: bold;	
+	border-bottom: 1px solid #FF6600;
+}
+
+
+/*DISPLAY TAG*/
+
+thead tr {  
+	
+	 background-color: #003333;  
+     font-family: Verdana, Arial, Helvetica, sans-serif;
+	 font-size: 11px;  
+     COLOR: white;
+     width: 92%;
+}   
+.odd {  
+     background-color: #CCCCCC;  
+     width: 92%;
+ }  
+ 
+ .pagebanner{  
+     background-color: #FFFFEE ;  
+     border: 1px dotted #999;  
+     padding: 2px 4px 2px 4px;  
+     width: 90%; 
+     display: block;  
+     font-family: Verdana, Arial, Helvetica, sans-serif;
+	 font-size: 11px;
+
+ } 
+ 
+ .pagelinks {  
+     background-color: #FFFFEE ;  
+     border: 1px dotted #999;  
+     padding: 2px 4px 2px 4px;  
+     width: 90%;
+     display: block; 
+     font-family: Verdana, Arial, Helvetica, sans-serif;
+     font-size: 11px;
+ }  
+ 
+ 
+ input.text.texto {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 11px;
+	color: #BLACK;	
+	text-align: left;
+}
+ input.text.numero {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 11px;
+	color: #BLACK;	
+	text-align: right;
+}
+
+.th a{
+	background-color: #003333;  
+     font-family: Verdana, Arial, Helvetica, sans-serif;
+	 font-size: 11px;  
+ }
+
+table.detail{
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 11px;
+	border: 1px solid Black;
+	background-color: Gray;
+	color: White;
+	font-weight: bold;
+	padding: 2px 2px 2px 5px;
+	width: 40%;	
+	align:center;	
+}
+
+
+table.search{
+font-family: Verdana, Arial, Helvetica, sans-serif;
+	color: Black;
+	font-size: 11px;	
+	text-decoration: none;
+	font-weight: normal;
+	border: 2px solid;
+	background-color: #F2F2F7;
+	padding: 4px 15px 4px 15px;
+	width: 40%;
+	align: center;
+}
+
+
+a {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	color: #000066;
+   text-decoration: none;	
+}
+
+.user_logout {
+	float: right;
+	padding: 0 30px;
+}
+.content-table {
+	padding: 20px 5px 20px 5px;
+	border: 1px solid #000;
+	margin: 30px;
+}
+.content-table tr{
+	text-align: center;
+}
+.title{
+	margin: 30px;
+}
+.title-subHeader{
+	float: left;
+	width: 50%;
+	font-size: 18px;
+	font-weight: bold;
+}
+.subHeader {
+    margin: 30px;
+}
+.linea-boton a{
+    background-color: #ccc;
+    border: 1px solid #000;
+    display: inline;
+    padding: 10px;
+    width: 200px;
+}
+.content-registerCliente{
+	margin: 30px;
+}
+.content-CargaStokPrecio{
+	margin: 30px;	
+}
+.title-form{
+	margin-top: 10px;
+	margin-bottom: 20px;
+	font-size: 18px;
+	font-weight: bold;
+	border-bottom: 2px solid #000;
+}
+.inputs{
+	margin-top: 5px;
+	margin-bottom: 5px;
+}
+
+.seccion-linea.linea-boton {
+    display: inline;
+    width: 150px;
+}
+
+.button-register{
+	padding-top: 40px;
+}
+.tituloPrincipal{
+	margin: 50px;
+	padding: 50px;
+	font-size: 30px;
+	font-weight: bold;
+}

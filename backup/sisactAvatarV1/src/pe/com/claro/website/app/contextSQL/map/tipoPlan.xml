@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" "http://www.ibatis.com/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="TipoPlan">
+	
+    <!-- se utiliza un alias para definir la clase Domain. -->
+	<typeAlias alias="tipoPlan" type="pe.com.claro.website.app.domain.TipoPlan"/>
+	
+	<!-- para traer una lista de tipos de plan  -->
+	<resultMap id="resultadoTipoPlan" class="tipoPlan">
+		<result property="id" column="id" />
+	    <result property="codigoTipoPlan" column="codigoTipoPlan" />
+	    <result property="tipoPlanEstado" column="tipoPlanEstado" />
+	    <result property="descripcionTipoPlan" column="descripcionTipoPlan" />
+	   	<result  property="topesConsumo" column="id" select="TopeConsumo.selectTipoPLanTopeConsumo"/>
+	</resultMap>
+	
+	<!--  PARA LOS GENERICOS INICIO -->		
+ 	<select id="list" parameterClass="tipoPlan"  resultMap="resultadoTipoPlan">
+ 		select * from tipoPlan
+ 	</select>
+ 	
+	<insert id="insert" parameterClass="tipoPlan">
+		INSERT INTO
+		tipoPlan 
+		(id,codigoTipoPlan,descripcionTipoPlan,tipoPlanEstado) 
+		VALUES
+		(NEXTVAL('tipoplan_id_seq'),#codigoTipoPlan#,#descripcionTipoPlan#,#tipoPlanEstado#)
+	</insert>
+	
+	<select id="selectByID" resultMap="resultadoTipoPlan">
+ 		select * from tipoPlan where id=#id#
+ 	</select>
+ 	
+ 	<update id="update" parameterClass="tipoPlan">
+		UPDATE
+		tipoPlan
+		SET
+		codigoTipoPlan = #codigoTipoPlan#,
+		descripcionTipoPlan = #descripcionTipoPlan#,
+		tipoPlanEstado = #tipoPlanEstado#
+		WHERE
+		id = #id#
+	</update>
+	
+	<delete id="delete">
+		DELETE
+		FROM
+		tipoPlan
+		WHERE
+		id = #id#
+	</delete>
+	<!--  PARA LOS GENERICOS FIN -->
+	
+	<select id="listForTipoNumero" parameterClass="tipoPlan"  resultMap="resultadoTipoPlan">
+ 		select * from tipoPlan where codigoTipoPlan = #codigoTipoPlan#
+ 	</select>
+ 	
+ 	 <select id="listarByTopeConsumoID" resultMap="resultadoTipoPlan" parameterClass="java.lang.Integer">
+		select  
+		tp.*
+		from tipoplantopeconsumo tptc
+		inner join tipoplan tp on tp.id = tptc.tipoplan_id
+		inner join topeconsumo tc on tc.id = tptc.topeconsumo_id
+		where tptc.topeconsumo_id = #value#
+	</select>	
+</sqlMap>

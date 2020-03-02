@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:util="http://www.springframework.org/schema/util"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation="
+http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.0.xsd
+http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-2.0.xsd
+http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.0.xsd
+http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-2.0.xsd">
+
+
+	<!-- Controllers ******************************************************************************** -->
+	
+	<!-- **************************************** Controller Cliente**************************************** -->
+	<bean id="clienteController" class="pe.com.claro.website.app.web.servlet.mvc.ClienteController">
+  		<property name="methodNameResolver" ref="methodNameResolver"/>
+		<property name="service" ref="clienteServiceBean"/>
+		<property name="listarView" value="listarView"/>
+		<property name="registrarView" value="registrarView"/>
+		<property name="actualizarView" value="registrarView"/>
+<!-- 		<property name="successfulView" value="usuarioSuccessView"/>		 -->
+		<property name="commandName" value="cliente"/>
+	</bean>
+	<!-- **************************************** Controller Cliente**************************************** -->
+	
+	
+		<!-- **************************************** Controller Line**************************************** -->
+	<bean id="lineController" class="pe.com.claro.website.app.web.servlet.mvc.LineController">
+  		<property name="methodNameResolver" ref="methodNameResolver"/>
+		<property name="service" ref="lineServiceBean"/>
+		<property name="listView" value="listView"/>
+		<property name="registerView" value="registerView"/>
+		<property name="updateView" value="updateView"/>
+<!-- 		<property name="successfulView" value="usuarioSuccessView"/>		 -->
+		<property name="commandName" value="line"/>
+	</bean>
+	<!-- **************************************** Controller Line**************************************** -->
+	
+	<!-- **************************************** Controller Sms**************************************** -->
+	<bean id="smsController" class="pe.com.claro.website.app.web.servlet.mvc.SmsController">
+  		<property name="methodNameResolver" ref="methodNameResolver"/>
+		<property name="service" ref="smsServiceBean"/>
+		<property name="listSmsView" value="listSmsView"/>
+		<property name="commandName" value="sms"/>
+	</bean>
+	<!-- **************************************** Controller Sms**************************************** -->
+
+	
+		<!-- **************************************** Controller ClaroServicePriceLoad **************************************** -->
+	<bean id="claroServicePriceLoadController" class="pe.com.claro.website.app.web.servlet.mvc.ClaroServicePriceLoadController">
+  		<property name="methodNameResolver" ref="methodNameResolver"/>
+		<property name="service" ref="claroServicePriceLoadServiceBean"/>
+		<property name="claroServicePriceLoadView" value="claroServicePriceLoadView"/>			
+		<property name="executePriceProcessSuccessfullView" value="executePriceProcessSuccessfullView"/>
+		<property name="checkProcessStatusSuccessfullView" value="checkProcessStatusSuccessfullView"/>			
+		<property name="checkProcessStatusErrorView" value="checkProcessStatusErrorView"/>
+		<property name="executePriceProcessErrorView" value="executePriceProcessErrorView"/>	
+		<property name="commandName" value="carga"/>
+	</bean>
+	<!-- **************************************** Controller ClaroServicePriceLoad **************************************** -->
+	
+	<!-- **************************************** Controller ClaroServiceStockLoad **************************************** -->
+	<bean id="claroServiceStockLoadController" class="pe.com.claro.website.app.web.servlet.mvc.ClaroServiceStockLoadController">
+  		<property name="methodNameResolver" ref="methodNameResolver"/>
+		<property name="service" ref="claroServiceStockLoadServiceBean"/>
+		<property name="claroServiceStockLoadView" value="claroServiceStockLoadView"/>		
+		<property name="checkProcessStockStatusSuccessfullView" value="checkProcessStockStatusSuccessfullView"/>					
+		<property name="executeStockProcessSuccessfullView" value="executeStockProcessSuccessfullView"/>						
+		<property name="checkProcessStockStatusErrorView" value="checkProcessStockStatusErrorView"/>		
+		<property name="executeStockProcessErrorView" value="executeStockProcessErrorView"/>	
+		<property name="commandName" value="carga"/>
+	</bean>
+	<!-- **************************************** Controller ClaroServiceStockLoad **************************************** -->
+	
+	<!-- **************************************** Controller ClaroServiceAccessoryLoad **************************************** -->
+	<!-- <bean id="claroServiceAccessoryLoadController" class="pe.com.claro.website.app.web.servlet.mvc.claroServiceAccessoryLoadController">
+  		<property name="methodNameResolver" ref="methodNameResolver"/>
+  		<property name="service" ref="claroServiceAccessoryLoadServiceBean"></property>
+		<property name="claroServiceAccessoryLoadView" value="claroServiceAccessoryLoadView"/>
+		<property name="commandName" value="carga"/>
+	</bean>-->
+	
+	<bean id="claroServiceAccessoryLoadController" class="pe.com.claro.website.app.web.servlet.mvc.ClaroServiceAccessoryLoadController">
+  		<property name="methodNameResolver" ref="methodNameResolver"/>
+  		<property name="service" ref="claroServiceAccessoryLoadServiceBean"></property>
+		<property name="claroServiceAccessoryLoadView" value="claroServiceAccessoryLoadView"/>
+		<property name="checkProcessAccessoryStatusSuccessfullView" value="checkProcessAccessoryStatusSuccessfullView"/>					
+		<property name="executeAccessoryProcessSuccessfullView" value="executeAccessoryProcessSuccessfullView"/>						
+		<property name="checkProcessAccessoryStatusErrorView" value="checkProcessAccessoryStatusErrorView"/>		
+		<property name="executeAccessoryProcessErrorView" value="executeAccessoryProcessErrorView"/>
+		<property name="commandName" value="carga"/>
+	</bean>
+	
+	<!-- **************************************** Controller ClaroServiceAccessoryLoad **************************************** -->	
+	
+	<!-- **************************************** Inicio Controller Parametro **************************************** -->
+	<bean id="parametroController" class="pe.com.claro.website.app.web.servlet.mvc.ParametroController">
+  		<property name="methodNameResolver" ref="methodNameResolver"/>
+		<property name="service" ref="parametroServiceBean"/>	
+		<property name="eliminarParametroView" value="eliminarParametroView"/>
+		<property name="listarParametroView" value="listarParametroView"/>
+		<property name="registrarParametroView" value="registrarParametroView"/>
+		<property name="actualizarParametroView" value="registrarParametroView"/>
+		
+		<property name="serviceSync" ref="ordenServiceSyncBean"/>
+		<property name="commandName" value="parametro"/>
+	</bean>
+	<!-- **************************************** Fin Controller Parametro **************************************** -->
+	
+	<!-- **************************************** Inicio Controller Parametro **************************************** -->
+	<bean id="evaluacionController" class="pe.com.claro.website.app.web.servlet.mvc.EvaluacionController">
+  		<property name="methodNameResolver" ref="methodNameResolver"/>
+		<property name="service" ref="evaluacionServiceBean"/>	
+		<property name="listarEvaluacionView" value="listarEvaluacionView"/>
+		<property name="actualizarEvaluacionView" value="actualizarEvaluacionView"/>
+		<property name="commandName" value="evaluacion"/>
+	</bean>
+	<!-- **************************************** Fin Controller Parametro **************************************** -->
+	
+	<!-- **************************************** Inicio Controller Solicitud **************************************** -->
+	<bean id="solicitudController" class="pe.com.claro.website.app.web.servlet.mvc.SolicitudController">
+  		<property name="methodNameResolver" ref="methodNameResolver"/>
+		<property name="service" ref="solicitudServiceBean"/>	
+		<property name="listarSolicitudesView" value="listarSolicitudesView"/>
+		<property name="commandName" value="solicitud"/>
+	</bean>
+	<!-- **************************************** Fin Controller Solicitud **************************************** -->
+	
+	<!-- lsoto: 31-10-19 : Implementación del servicio de tope de consumo - INICIO  -->
+	<!-- **************************************** Inicio Controller Tope Consumo **************************************** -->
+	<bean id="topeConsumoController" class="pe.com.claro.website.app.web.servlet.mvc.TopeConsumoController">
+  		<property name="methodNameResolver" ref="methodNameResolver"/>
+		<property name="service" ref="topeConsumoServiceBean"/>
+		<property name="listarView" value="listarViewTopeConsumo"/>
+		<property name="registrarView" value="registrarViewTopeConsumo"/>
+		<property name="actualizarView" value="registrarViewTopeConsumo"/>
+		<property name="commandName" value="topeConsumo"/>
+	</bean>
+	<!-- **************************************** Fin Controller Tope Consumo **************************************** -->
+	<!-- lsoto: 31-10-19 : Implementación del servicio de tope de consumo - INICIO  -->
+	
+	<!-- lsoto: 23-11-19 : Implementación del mantenimiento de planes y asociación con los topes de consumo - INICIO  -->
+	<!-- **************************************** Inicio Controller Tipo de Plan **************************************** -->
+	<bean id="tipoPlanController" class="pe.com.claro.website.app.web.servlet.mvc.TipoPlanController">
+  		<property name="methodNameResolver" ref="methodNameResolver"/>
+		<property name="service" ref="tipoPlanServiceBean"/>
+		<property name="serviceTopeConsumo" ref="topeConsumoServiceBean"/>
+		<property name="serviceTipoPLan" ref="tipoPlanServiceBean"/>
+		<property name="serviceTopeConsumoxTipoPlan" ref="topeConsumoxTipoPlanServiceBean"/>
+		<property name="listarView" value="listarViewTipoPlan"/>
+		<property name="registrarView" value="registrarViewTipoPlan"/>
+		<property name="actualizarView" value="registrarViewTipoPlan"/>
+		<property name="addTopeConsumoView" value="perfilAddTopeConsumoView"/>
+		<property name="commandName" value="tipoPlan"/>
+	</bean>
+	<!-- **************************************** Fin Controller Tipo de Plan **************************************** -->
+	<!-- lsoto: 23-11-19 : Implementación del mantenimiento de planes y asociación con los topes de consumo - FIN  -->	
+	
+	<!-- **************************************** Controller ClaroServiceSyncOrderLoad **************************************** -->
+	
+	<bean id="claroServiceSyncOrderController" class="pe.com.claro.website.app.web.servlet.mvc.ClaroServiceSyncOrderController">
+  		<property name="methodNameResolver" ref="methodNameResolver"/>
+  		<property name="service" ref="claroServiceSyncOrderServiceBean"></property>
+		<property name="claroServiceSyncOrderView" value="claroServiceSyncOrderView"/>
+		<property name="checkProcessSyncOrderStatusSuccessfullView" value="checkProcessSyncOrderStatusSuccessfullView"/>					
+		<property name="executeSyncOrderProcessSuccessfullView" value="executeSyncOrderProcessSuccessfullView"/>						
+		<property name="checkProcessSyncOrderStatusErrorView" value="checkProcessSyncOrderStatusErrorView"/>		
+		<property name="executeSyncOrderProcessErrorView" value="executeSyncOrderProcessErrorView"/>
+		<property name="commandName" value="carga"/>
+	</bean>
+	
+	<!-- **************************************** Controller ClaroServiceSyncOrderLoad **************************************** -->
+	
+	<!-- **************************************** Inicio Controller Orden **************************************** -->
+	<bean id="ordenesController" class="pe.com.claro.website.app.web.servlet.mvc.OrdenesController">
+  		<property name="methodNameResolver" ref="methodNameResolver"/>
+  		<property name="parametroService" ref="parametroServiceBean"/>
+  		<property name="serviceSync" ref="ordenServiceSyncBean"/>
+		<property name="serviceDetalleOrdenService" ref="detalleOrdenServiceBean"/>
+		<property name="service" ref="ordenServiceBean"/>	
+		<property name="listarOrdenesView" value="listarOrdenesView"/>
+		<property name="actualizarOrdenesView" value="actualizarOrdenesView"/>
+		<property name="listarDetalleOrdenView" value="listarDetalleOrdenView"/>
+		<property name="historialOrdenesView" value="historialOrdenesView"/>
+		<property name="commandName" value="ordenes"/>
+	</bean>
+	<!-- **************************************** Fin Controller Orden **************************************** -->
+	
+ </beans>

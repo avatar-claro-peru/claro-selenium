@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions name="BSS_ClaroSyncOrder" 
+	targetNamespace="http://claro.com.pe/BSS_ClaroSyncOrder/" 
+	xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" 
+	xmlns:tns="http://claro.com.pe/BSS_ClaroSyncOrder/" 
+	xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" 
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema" 
+	xmlns:xsd1="http://claro.com.pe/esb/data/bss/sendEventStatus" 
+	xmlns:xsd2="http://claro.com.pe/esb/data/bss/generico/claroFault/v1/"
+	xmlns:he="http://claro.com.pe/esb/data/bss/generico/claroGenericHeader/v1/">
+  <wsdl:types>
+    <xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    	<xsd:import
+    		namespace="http://claro.com.pe/esb/data/bss/sendEventStatus"
+    		schemaLocation="../../xsd/OAGIS/9.0/Overlays/Claro2.1/SendEventStatus.xsd">
+    	</xsd:import>
+    	<xsd:import
+    		namespace="http://claro.com.pe/esb/data/bss/generico/claroFault/v1/"
+    		schemaLocation="../../xsd/OAGIS/9.0/Overlays/Claro2.1/ClaroFault_v1.xsd">
+    	</xsd:import>
+    	<xsd:import
+			namespace="http://claro.com.pe/esb/data/bss/generico/claroGenericHeader/v1/"
+			schemaLocation="../../xsd/OAGIS/9.0/Overlays/Claro2.1/ClaroGenericHeaders_v1.xsd"> 
+		</xsd:import>
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="sendEventStatusRequest">
+    <wsdl:part element="xsd1:sendEventStatusRequest" name="sendEventStatusRequest"/>
+  </wsdl:message>
+  <wsdl:message name="sendEventStatusResponse">
+    <wsdl:part element="xsd1:sendEventStatusResponse" name="sendEventStatusResponse"/>
+  </wsdl:message>
+  <wsdl:message name="claroFault">
+  	<wsdl:part name="claroFault" element="xsd2:claroFault"></wsdl:part>
+  </wsdl:message>
+  
+  <wsdl:message name="headerRequest">
+		<wsdl:part name="headerRequest" element="he:headerRequest" />
+	</wsdl:message>
+	<wsdl:message name="headerResponse">
+		<wsdl:part name="headerResponse" element="he:headerResponse" />
+	</wsdl:message>
+  
+  <wsdl:portType name="BSS_ClaroSyncOrder">
+  	<wsdl:operation name="sendEventStatus">
+    	<wsdl:input message="tns:sendEventStatusRequest"/>
+    	<wsdl:output message="tns:sendEventStatusResponse"/>
+    	<wsdl:fault name="claroFault" message="tns:claroFault"></wsdl:fault>
+  	</wsdl:operation>
+  </wsdl:portType>
+  
+  <wsdl:binding name="BSS_ClaroSyncOrderSOAP" type="tns:BSS_ClaroSyncOrder">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="sendEventStatus">
+      <soap:operation soapAction="http://claro.com.pe/BSS_ClaroSyncOrder/sendEventStatus"/>
+      <wsdl:input>
+	  	<soap:header message="tns:headerRequest" part="headerRequest" use="literal" />
+		<soap:body use="literal" parts="sendEventStatusRequest" />
+	  </wsdl:input>
+      <wsdl:output>
+	  	<soap:header message="tns:headerResponse" part="headerResponse" use="literal" />
+		<soap:body use="literal" parts="sendEventStatusResponse" />
+	  </wsdl:output>
+	  <wsdl:fault name="claroFault">
+	  	<soap:fault name="claroFault" use="literal" />
+	  </wsdl:fault>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="BSS_ClaroSyncOrder_v1">
+    <wsdl:port binding="tns:BSS_ClaroSyncOrderSOAP" name="BSS_ClaroSyncOrderSOAP">
+      <soap:address location="http://localhost/webapp/wcs/services/BSS_ClaroSyncOrderSOAP"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

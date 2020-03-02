@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" "http://www.ibatis.com/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="Opcion">
+	
+     <!-- se utiliza un alias para definir la clase Domain. -->
+	<typeAlias alias="opcion" type="pe.com.claro.website.seguridad.domain.Opcion"/>
+	
+   
+	<resultMap id="resultadoO" class="opcion">
+		<result property="id" column="id" />
+	    <result property="nombre" column="nombre" />
+	    <result property="estado" column="estado" />
+	    <result property="descripcion" column="descripcion" />
+	</resultMap>
+ 
+  	<!--  PARA LOS GENERICOS -->	
+	<select id="list" resultMap="resultadoO" parameterClass="opcion">
+		select * from opcion
+	</select>
+	
+	<insert id="insert" parameterClass="opcion"> 
+		INSERT INTO
+		opcion (ID, nombre, descripcion,estado)
+		VALUES ( NEXTVAL('opcion_id_seq'),#nombre#,#descripcion#,#estado#)
+	</insert>
+	
+	<select id="selectByID" resultMap="resultadoO">
+ 		select * from opcion where ID=#id#
+ 	</select>
+	<update id="update" parameterClass="opcion">
+		UPDATE
+		opcion
+		SET
+		ID = #id#,
+		nombre = #nombre#,
+		descripcion = #descripcion#,
+		estado = #estado#
+		WHERE
+		id = #id#
+	</update>
+	<delete id="delete">
+		DELETE
+		FROM
+		opcion
+		WHERE
+		id = #id#
+	</delete>
+ 
+ 	<select id="selectPerfilOpcion" parameterClass="java.lang.Integer" resultMap="resultadoO">
+		select * from opcion where id in (select opcion_id from perfil_opcion where perfil_id = #value# )
+	</select>
+
+
+
+</sqlMap>

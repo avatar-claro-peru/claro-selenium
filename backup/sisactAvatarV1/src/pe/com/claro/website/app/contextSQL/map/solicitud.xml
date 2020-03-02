@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" "http://www.ibatis.com/dtd/sql-map-2.dtd">
+<sqlMap namespace="Solicitud">
+	
+   <!-- se utiliza un alias para definir la clase Domain. -->
+
+	<typeAlias alias="solicitud" type="pe.com.claro.website.app.domain.Solicitud" />
+		
+	<!--
+		Result maps describe the mapping between the columns returned from a
+		query, and the class properties. A result map isn't necessary if the
+		columns (or aliases) match to the properties exactly.
+	-->
+	<resultMap id="resultadoS" class="solicitud">
+		<result property="id" column="id" />
+		<result property="idCliente" column="id_cliente" />
+		<result property="telefono" column="telefono" />
+		<result property="token" column="token" />
+		<result property="codigoSMS" column="codigosms" />
+		<result property="estado" column="estado" />
+		<result property="fechaGeneracion" column="fechageneracion" />
+		<result property="fechaValidacion" column="fechavalidacion" />
+		<result property="intentosFallidos" column="intentosfallidos" />
+		<result property="cliente" column="id_cliente" select="Cliente.selectByID"/>
+	</resultMap>
+ 
+	<!-- PARA LAS OTRAS FUNCIONES -->
+ 	
+ 	<select id="list" resultMap="resultadoS" parameterClass="solicitud">
+		select * from solicitud order by id_cliente desc
+	</select>
+ 						
+ 	<select id="selectByDNI" resultMap="resultadoS" parameterClass="String">
+ 		SELECT
+ 		s.*
+ 		FROM 
+ 		solicitud s 
+ 		LEFT JOIN 
+ 		cliente c 
+ 		ON 
+ 		s.id_cliente = c.id 
+ 		WHERE 
+ 		c.num_doc = #dni#
+ 	</select>
+ 	
+ 	<select id="selectByCell" resultMap="resultadoS" parameterClass="Integer">
+ 		SELECT
+ 		*
+ 		FROM 
+ 		solicitud
+ 		WHERE 
+ 		telefono = #telefono#
+ 	</select> 	 		
+</sqlMap>

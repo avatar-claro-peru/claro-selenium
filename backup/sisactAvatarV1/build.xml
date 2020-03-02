@@ -1,0 +1,456 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="SISACTAVATAR" default="src.build" basedir=".">
+	<!--
+		MLAntScript: Basic Ant Script
+		Copyright (C) 2006 Abner Nazario Ballardo Urco
+		http://www.modlost.net
+	
+		This program is free software; you can redistribute it and/or
+		modify it under the terms of the GNU General Public License
+		as published by the Free Software Foundation; either version 2
+		of the License, or (at your option) any later version.
+	
+		This program is distributed in the hope that it will be useful,
+		but WITHOUT ANY WARRANTY; without even the implied warranty of
+		MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+		GNU General Public License for more details.
+	
+		You should have received a copy of the GNU General Public License
+		along with this program; if not, write to the Free Software
+		Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.	
+	-->
+	<!--/////////////////////////////////////////////////////////////////////-->
+	<!--                                                                     -->
+	<!--                     PROPERTIES FILES                                -->
+	<!--                                                                     -->
+	<!--/////////////////////////////////////////////////////////////////////-->
+	<property file="build.properties" />
+
+	<!--/////////////////////////////////////////////////////////////////////-->
+	<!--                                                                     -->
+	<!--                         PROPERTIES                                  -->
+	<!--                                                                     -->
+	<!--/////////////////////////////////////////////////////////////////////-->
+
+	<!-- Compilation Customization -->
+	<property name="compile.debug" value="true" />
+	<property name="compile.deprecation" value="false" />
+	<property name="compile.optimize" value="false" />
+
+	<!-- Dependencies -->
+	<property name="dependency.file" value="${app.name}-${app.version}.zip" />
+	<property name="dependency.server" value="http://localhost/java/lib" />
+
+
+	<!-- Directories -->
+	<property name="src.home" value="${basedir}/src" />
+	<property name="src.test.home" value="${basedir}/test" />
+	<property name="build.home" value="${basedir}/build" />
+	<property name="build.classes.home" value="${basedir}/build/WEB-INF/classes" />
+	<property name="build.lib.home" value="${basedir}/build/WEB-INF/lib" />
+	<property name="build.test.home" value="${basedir}/build.test" />
+	<property name="dist.home" value="${basedir}/dist" />
+	<property name="lib.home" value="${basedir}" />
+	<property name="docs.home" value="${basedir}/docs" />
+	<property name="metadata.home" value="${basedir}/metadata" />
+	<property name="static.home" value="${basedir}/web" />
+
+
+	<property name="dummy7.dir" value="X:/Unidad_X/DUMMY" />
+	<property name="dummy8.dir" value="X:/Unidad_X/workspace" />
+	<property name="SConsultaOrdenesCA" value="ServiceConsultaOrdenesClaroAvatar" />
+	<property name="SCulqiConsultarOrdenCA" value="ServiceCulqiConsultarOrdenClaroAvatar" />
+	<property name="SCulqiCrearCargoCA" value="ServiceCulqiCrearCargoClaroAvatar" />
+	<property name="SEvaluaOrdenCA2" value="ServiceEvaluaOrdenClaroAvatar2" />
+	<property name="SPRSSmsCA" value="ServicePRSSmsClaroAvatar" />
+	<property name="SPRSValidacionCA" value="ServicePRSValidacionClaroAvatar" />
+	<property name="SValidarCompraCA" value="ServiceValidarCompraClaroAvatar" />
+	<property name="sisactAvatar" value="sisactAvatar" />
+	
+	<!--/////////////////////////////////////////////////////////////////////-->
+	<!--                                                                     -->
+	<!--                      COMMON CLASSPATHS                              -->
+	<!--                                                                     -->
+	<!--/////////////////////////////////////////////////////////////////////-->
+	<path id="classpath.lib">
+		<fileset dir="${lib.home}" includes="*.jar" />
+	</path>
+
+	<path id="classpath.lib.tools">
+		<fileset dir="${lib.home}/tools" includes="*.jar" />
+	</path>
+
+	<!--/////////////////////////////////////////////////////////////////////-->
+	<!--                                                                     -->
+	<!--                        ALL TARGET                                   -->
+	<!--                                                                     -->
+	<!--/////////////////////////////////////////////////////////////////////-->
+	<target name="all" depends="src.clean,src.build" description="Clean build and dist directories, then compile" />
+
+	<!--/////////////////////////////////////////////////////////////////////-->
+	<!--                                                                     -->
+	<!--                        CLEAN ALL TARGET                             -->
+	<!--                                                                     -->
+	<!--/////////////////////////////////////////////////////////////////////-->
+	<target name="all.clean" description="Clean generated directories and dependencies" depends="src.clean,test.clean,deps.delete">
+		<delete dir="${dist.home}" />
+		<delete dir="${docs.home}" />
+	</target>
+
+	<!--/////////////////////////////////////////////////////////////////////-->
+	<!--                                                                     -->
+	<!--                          CLEAN TARGET                               -->
+	<!--                                                                     -->
+	<!--/////////////////////////////////////////////////////////////////////-->
+	<target name="src.clean" description="Clean generated directories">
+		<delete dir="${build.home}" />
+	</target>
+
+	<!--/////////////////////////////////////////////////////////////////////-->
+	<!--                                                                     -->
+	<!--                          BUILD TARGET                               -->
+	<!--                                                                     -->
+	<!--/////////////////////////////////////////////////////////////////////-->
+	<target name="src.build" depends="src.build.prepare" description="Compile Java sources">
+
+		<javac srcdir="${src.home}" destdir="${build.classes.home}" debug="${compile.debug}" deprecation="${compile.deprecation}" optimize="${compile.optimize}">
+			<classpath refid="classpath.lib.tools" />
+			<classpath refid="classpath.lib" />
+		</javac>
+
+		<copy todir="${build.classes.home}">
+			<fileset dir="${src.home}" excludes="**/*.java,**/*.html" />
+		</copy>
+
+		<copy todir="${build.lib.home}">
+			<fileset dir="${lib.home}" includes="*.jar" />
+		</copy>
+	</target>
+
+	<!--/////////////////////////////////////////////////////////////////////-->
+	<!--                                                                     -->
+	<!--                        DIST WAR TARGET                              -->
+	<!--                                                                     -->
+	<!--/////////////////////////////////////////////////////////////////////-->
+	<target name="src.dist.war" depends="src.build,src.build.prepare" description="Create war binary distribution">
+		<jar jarfile="${dist.home}/${app.name}.war" basedir="${build.home}" />
+	</target>
+
+	<!--/////////////////////////////////////////////////////////////////////-->
+	<!--                                                                     -->
+	<!--                        DIST JAR TARGET                              -->
+	<!--                                                                     -->
+	<!--/////////////////////////////////////////////////////////////////////-->
+	<target name="src.dist.jar" depends="src.build" description="Create jar binary distribution">
+		<mkdir dir="${dist.home}" />
+
+		<jar destfile="${dist.home}/${app.name}-${app.version}.jar">
+			<fileset dir="${build.classes.home}" />
+		</jar>
+	</target>
+
+	<!--/////////////////////////////////////////////////////////////////////-->
+	<!--                                                                     -->
+	<!--                         PREPARE TARGET                              -->
+	<!--                                                                     -->
+	<!--/////////////////////////////////////////////////////////////////////-->
+	<target name="src.build.prepare">
+		<mkdir dir="${build.home}" />
+		<mkdir dir="${build.test.home}" />
+
+		<copy todir="${build.home}">
+			<fileset dir="${static.home}" />
+		</copy>
+	</target>
+
+	<!--/////////////////////////////////////////////////////////////////////-->
+	<!--                                                                     -->
+	<!--                       GET DEPENDENCIES                              -->
+	<!--                                                                     -->
+	<!--/////////////////////////////////////////////////////////////////////-->
+	<target name="deps.retrieve" description="Retrieve dependencies">
+		<get src="${dependency.server}/${dependency.file}" dest="${lib.home}/${dependency.file}" />
+		<unzip src="${lib.home}/${dependency.file}" dest="${lib.home}">
+		</unzip>
+		<delete file="${lib.home}/${dependency.file}" />
+	</target>
+
+	<!--/////////////////////////////////////////////////////////////////////-->
+	<!--                                                                     -->
+	<!--                      DELETE DEPENDENCIES                            -->
+	<!--                                                                     -->
+	<!--/////////////////////////////////////////////////////////////////////-->
+	<target name="deps.delete" description="Delete dependencies">
+		<delete>
+			<fileset dir="${lib.home}" includes="**/*.jar" />
+		</delete>
+	</target>
+
+	<!--/////////////////////////////////////////////////////////////////////-->
+	<!--                                                                     -->
+	<!--                             DATABASE                                -->
+	<!--                                                                     -->
+	<!--/////////////////////////////////////////////////////////////////////-->
+	<target name="db.init" description="Create tables">
+		<sql driver="${db.driver}" url="${db.url}" userid="${db.username}" password="${db.password}">
+			<transaction src="${metadata.home}/db/db.init.sql" />
+			<classpath refid="classpath.lib" />
+		</sql>
+	</target>
+
+	<target name="db.tables.create" description="Create tables">
+		<sql driver="${db.driver}" url="${db.url}" userid="${db.username}" password="${db.password}">
+			<transaction src="${metadata.home}/db/db.tables.create.sql" />
+			<classpath refid="classpath.lib" />
+		</sql>
+	</target>
+
+	<target name="db.tables.createSP" description="Create Procedimientos Almacenados">
+		<sql driver="${db.driver}" url="${db.url}" userid="${db.username}" password="${db.password}">
+			<transaction src="${metadata.home}/sp/SP_EJEMPLO.sql" />
+			<classpath refid="classpath.lib" />
+		</sql>
+	</target>
+
+	<target name="db.tables.data" description="Insert data">
+		<sql driver="${db.driver}" url="${db.url}" userid="${db.username}" password="${db.password}">
+			<transaction src="${metadata.home}/db/db.tables.data.sql" />
+			<classpath refid="classpath.lib" />
+		</sql>
+	</target>
+
+	<target name="db.tables.drop" description="Delete tables">
+		<sql driver="${db.driver}" url="${db.url}" userid="${db.username}" password="${db.password}">
+			<transaction src="${metadata.home}/db/db.tables.drop.sql" />
+			<classpath refid="classpath.lib" />
+		</sql>
+	</target>
+
+	<!--/////////////////////////////////////////////////////////////////////-->
+	<!--                                                                     -->
+	<!--                            UNIT TESTING                             -->
+	<!--                                                                     -->
+	<!--/////////////////////////////////////////////////////////////////////-->
+	<target name="test.clean" description="Clean Tests">
+		<delete dir="${build.test.home}" />
+	</target>
+
+	<target name="test.build" depends="src.build" description="Compile test cases">
+		<javac srcdir="${src.test.home}" destdir="${build.test.home}" debug="${compile.debug}" deprecation="${compile.deprecation}" optimize="${compile.optimize}">
+			<classpath refid="classpath.lib" />
+			<classpath refid="classpath.lib.tools" />
+			<classpath path="${build.classes.home}" />
+		</javac>
+
+		<copy todir="${build.test.home}">
+			<fileset dir="${src.test.home}" excludes="**/*.java" />
+		</copy>
+	</target>
+
+	<target name="test" depends="src.build,test.build" description="Run tests">
+		<junit fork="yes" printsummary="yes" haltonfailure="yes">
+			<batchtest fork="yes">
+				<fileset dir="${build.test.home}" includes="**/*Test.class" />
+			</batchtest>
+
+			<formatter type="brief" usefile="false" />
+
+			<classpath refid="classpath.lib" />
+			<classpath refid="classpath.lib.tools" />
+			<classpath path="${build.classes.home}:${build.test.home}" />
+		</junit>
+	</target>
+
+	<!--/////////////////////////////////////////////////////////////////////-->
+	<!--                                                                     -->
+	<!--                      Interaction with TOMCAT                        -->
+	<!--                                                                     -->
+	<!--/////////////////////////////////////////////////////////////////////-->
+	<property environment="env" />
+	<property name="tomcat.home" value="${env.CATALINA_HOME}" />
+	<property name="manager.url" value="http://localhost:8080/manager" />
+
+	<path id="tomcat.app.classpath">
+		<pathelement location="${tomcat.home}/common/classes" />
+
+		<fileset dir="${tomcat.home}/common/endorsed">
+			<include name="*.jar" />
+		</fileset>
+		<fileset dir="${tomcat.home}/common/lib">
+			<include name="*.jar" />
+		</fileset>
+
+		<pathelement location="${tomcat.home}/shared/classes" />
+		<fileset dir="${tomcat.home}/shared/lib">
+			<include name="*.jar" />
+		</fileset>
+
+		<pathelement location="${tomcat.home}/shared/classes" />
+	</path>
+
+	<path id="tomcat.classpath">
+		<pathelement path="${tomcat.home}/bin/bootstrap.jar" />
+		<pathelement path="${tomcat.home}/bin/commons-logging-api.jar" />
+		<pathelement path="${tomcat.home}/server/lib/catalina-ant.jar" />
+	</path>
+
+	<taskdef name="deploy" classname="org.apache.catalina.ant.DeployTask" classpathref="tomcat.classpath" onerror="report" />
+	<taskdef name="install" classname="org.apache.catalina.ant.InstallTask" classpathref="tomcat.classpath" onerror="report" />
+	<taskdef name="list" classname="org.apache.catalina.ant.ListTask" classpathref="tomcat.classpath" onerror="report" />
+	<taskdef name="reload" classname="org.apache.catalina.ant.ReloadTask" classpathref="tomcat.classpath" onerror="report" />
+	<taskdef name="remove" classname="org.apache.catalina.ant.RemoveTask" classpathref="tomcat.classpath" onerror="report" />
+	<taskdef name="resources" classname="org.apache.catalina.ant.ResourcesTask" classpathref="tomcat.classpath" onerror="report" />
+	<taskdef name="roles" classname="org.apache.catalina.ant.RolesTask" classpathref="tomcat.classpath" onerror="report" />
+	<taskdef name="start" classname="org.apache.catalina.ant.StartTask" classpathref="tomcat.classpath" onerror="report" />
+	<taskdef name="stop" classname="org.apache.catalina.ant.StopTask" classpathref="tomcat.classpath" onerror="report" />
+	<taskdef name="undeploy" classname="org.apache.catalina.ant.UndeployTask" classpathref="tomcat.classpath" onerror="report" />
+
+	<target name="tomcat.server.start" if="tomcat.home" description="Start Jakarta Tomcat">
+		<java classname="org.apache.catalina.startup.Bootstrap" fork="true">
+			<sysproperty key="java.util.logging.manager" value="org.apache.juli.ClassLoaderLogManager" />
+			<sysproperty key="java.endorsed.dirs" value="${catalina.home}/common/endorsed" />
+			<sysproperty key="catalina.base" value="${tomcat.home}" />
+			<sysproperty key="catalina.home" value="${tomcat.home}" />
+			<sysproperty key="java.io.tmpdir" value="${tomcat.home}/temp" />
+			<classpath refid="tomcat.classpath" />
+			<arg value="start" />
+		</java>
+	</target>
+
+	<target name="tomcat.server.stop" if="tomcat.home" description="Start Jakarta Tomcat">
+		<java classname="org.apache.catalina.startup.Bootstrap" fork="true">
+			<sysproperty key="java.endorsed.dirs" value="${catalina.home}/common/endorsed" />
+			<sysproperty key="catalina.base" value="${tomcat.home}" />
+			<sysproperty key="catalina.home" value="${tomcat.home}" />
+			<sysproperty key="java.io.tmpdir" value="${tomcat.home}/temp" />
+			<classpath refid="tomcat.classpath" />
+			<arg value="stop" />
+		</java>
+	</target>
+
+	<target name="tomcat.server.list" if="tomcat.home" description="List installed applications on servlet container">
+		<list url="${manager.url}" username="${manager.username}" password="${manager.password}" />
+	</target>
+
+	<target name="tomcat.app.deploy" if="tomcat.home" depends="src.build" description="Install application to servlet container">
+
+		<deploy url="${manager.url}" username="${manager.username}" password="${manager.password}" path="${app.path}" localWar="file://${build.home}" />
+
+		<mkdir dir="${build.home}/META-INF" />
+		<echo file="${build.home}/META-INF/${app.name}.xml">
+			<Context path="${app.path}" docBase="${build.home}" debug="0">
+			</Context>
+		</echo>
+		<deploy url="${manager.url}" username="${manager.username}" password="${manager.password}" path="${app.path}" config="file://${build.home}/META-INF/${app.name}.xml" />
+	</target>
+
+	<target name="tomcat.app.reload" if="tomcat.home" depends="src.build" description="Reload application on servlet container">
+		<reload url="${manager.url}" username="${manager.username}" password="${manager.password}" path="${app.path}" />
+	</target>
+
+	<target name="tomcat.app.undeploy" if="tomcat.home" description="Remove application on servlet container">
+		<undeploy url="${manager.url}" username="${manager.username}" password="${manager.password}" path="${app.path}" />
+	</target>
+
+	<target name="tomcat.app.start" if="tomcat.home" description="Start application on servlet container">
+		<start url="${manager.url}" username="${manager.username}" password="${manager.password}" path="${app.path}" />
+	</target>
+
+	<target name="tomcat.app.stop" if="tomcat.home" description="Stop application on servlet container">
+		<stop url="${manager.url}" username="${manager.username}" password="${manager.password}" path="${app.path}" />
+	</target>
+
+	<target name="01.svn.update.sisactAvatar">
+		<echo>------ Actualizando los proyectos de WC7 Inicio --------</echo>
+
+		<exec dir="X:\Unidad_X\workspace\sisactAvatar" executable="cmd" >
+			<arg
+				line="/c svn_sync.bat" />
+		</exec>
+		<echo>------ Actualizando los proyectos de WC7 Fin --------</echo>
+	</target>
+	
+	<target name="02.code.update.sisactAvatar">		
+	
+		<echo>Upgrade los proyectos del eclipse a WC8 Inicio</echo>
+		
+		<echo>copy src inicio - ServiceConsultaOrdenesClaroAvatar</echo>
+		<copy todir="${dummy8.dir}/${SConsultaOrdenesCA}/src" overwrite="true" verbose="true">
+			<fileset dir="${dummy7.dir}/${SConsultaOrdenesCA}/src" />
+		</copy>
+		<echo>copy src fin - ServiceConsultaOrdenesClaroAvatar</echo>
+		
+		<echo>copy src inicio - ServiceCulqiConsultarOrdenClaroAvatar</echo>
+		<copy todir="${dummy8.dir}/${SCulqiConsultarOrdenCA}/src" overwrite="true" verbose="true">
+			<fileset dir="${dummy7.dir}/${SCulqiConsultarOrdenCA}/src" />
+		</copy>
+		<echo>copy src fin - ServiceCulqiConsultarOrdenClaroAvatar</echo>
+
+		<echo>copy src inicio - ServiceCulqiCrearCargoClaroAvatar</echo>
+		<copy todir="${dummy8.dir}/${SCulqiCrearCargoCA}/src" overwrite="true" verbose="true">
+			<fileset dir="${dummy7.dir}/${SCulqiCrearCargoCA}/src" />
+		</copy>
+		<echo>copy src fin - ServiceCulqiCrearCargoClaroAvatar</echo>
+
+		<echo>copy src inicio - ServiceEvaluaOrdenClaroAvatar2</echo>
+		<copy todir="${dummy8.dir}/${SEvaluaOrdenCA2}/src" overwrite="true" verbose="true">
+			<fileset dir="${dummy7.dir}/${SEvaluaOrdenCA2}/src" />
+		</copy>
+		<echo>copy src fin - ServiceEvaluaOrdenClaroAvatar2</echo>
+		
+		<echo>copy src inicio - ServicePRSSmsClaroAvatar</echo>
+		<copy todir="${dummy8.dir}/${SPRSSmsCA}/src" overwrite="true" verbose="true">
+			<fileset dir="${dummy7.dir}/${SPRSSmsCA}/src" />
+		</copy>
+		<echo>copy src fin - ServicePRSSmsClaroAvatar</echo>
+		
+		<echo>copy src inicio - ServicePRSValidacionClaroAvatar</echo>
+		<copy todir="${dummy8.dir}/${SPRSValidacionCA}/src" overwrite="true" verbose="true">
+			<fileset dir="${dummy7.dir}/${SPRSValidacionCA}/src" />
+		</copy>
+		<echo>copy src fin - ServicePRSValidacionClaroAvatar</echo>
+		
+		<echo>copy src inicio - ServiceValidarCompraClaroAvatar</echo>
+		<copy todir="${dummy8.dir}/${SValidarCompraCA}/src" overwrite="true" verbose="true">
+			<fileset dir="${dummy7.dir}/${SValidarCompraCA}/src" />
+		</copy>
+		<echo>copy src fin - ServiceValidarCompraClaroAvatar</echo>
+		
+		<echo>copy src inicio - sisactAvatar</echo>
+		<copy todir="${dummy8.dir}/${sisactAvatar}/src" overwrite="true" verbose="true">
+			<fileset dir="${dummy7.dir}/${sisactAvatar}/src" />
+		</copy>
+		<copy todir="${dummy8.dir}/${sisactAvatar}/metadata" overwrite="true" verbose="true">
+			<fileset dir="${dummy7.dir}/${sisactAvatar}/metadata" />
+		</copy>
+		<copy todir="${dummy8.dir}/${sisactAvatar}/WebContent/dist" overwrite="true" verbose="true">
+			<fileset dir="${dummy7.dir}/${sisactAvatar}/WebContent/dist" />
+		</copy>
+		<copy todir="${dummy8.dir}/${sisactAvatar}/WebContent/imagenes" overwrite="true" verbose="true">
+			<fileset dir="${dummy7.dir}/${sisactAvatar}/WebContent/imagenes" />
+		</copy>
+		<copy todir="${dummy8.dir}/${sisactAvatar}/WebContent/js" overwrite="true" verbose="true">
+			<fileset dir="${dummy7.dir}/${sisactAvatar}/WebContent/js" />
+		</copy>
+		<copy todir="${dummy8.dir}/${sisactAvatar}/WebContent/styles" overwrite="true" verbose="true">
+			<fileset dir="${dummy7.dir}/${sisactAvatar}/WebContent/styles" />
+		</copy>
+		<copy todir="${dummy8.dir}/${sisactAvatar}/WebContent/wsdl" overwrite="true" verbose="true">
+			<fileset dir="${dummy7.dir}/${sisactAvatar}/WebContent/wsdl" />
+		</copy>
+			<copy todir="${dummy8.dir}/${sisactAvatar}/WebContent/xsd" overwrite="true" verbose="true">
+			<fileset dir="${dummy7.dir}/${sisactAvatar}/WebContent/xsd" />
+		</copy>
+		<copy todir="${dummy8.dir}/${sisactAvatar}/WebContent/WEB-INF" overwrite="true" verbose="true">
+			<fileset dir="${dummy7.dir}/${sisactAvatar}/WebContent/WEB-INF" />
+		</copy>
+		<copy overwrite="true" file="${dummy7.dir}/${sisactAvatar}/WebContent/calendario.jsp" todir="${dummy8.dir}/${sisactAvatar}/WebContent"/>
+		<copy overwrite="true" file="${dummy7.dir}/${sisactAvatar}/WebContent/error.jsp" todir="${dummy8.dir}/${sisactAvatar}/WebContent"/>
+		<copy overwrite="true" file="${dummy7.dir}/${sisactAvatar}/WebContent/index.html" todir="${dummy8.dir}/${sisactAvatar}/WebContent"/>
+		<copy overwrite="true" file="${dummy7.dir}/${sisactAvatar}/WebContent/inicio.jsp" todir="${dummy8.dir}/${sisactAvatar}/WebContent"/>
+		<copy overwrite="true" file="${dummy7.dir}/${sisactAvatar}/WebContent/main.jsp" todir="${dummy8.dir}/${sisactAvatar}/WebContent"/>
+		<echo>copy src fin - sisactAvatar</echo>
+		
+		<echo>Upgrade los proyectos del eclipse a WC8 Fin</echo>
+	</target>
+</project>

@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:util="http://www.springframework.org/schema/util"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation="
+http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.0.xsd
+http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-2.0.xsd
+http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.0.xsd
+http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-2.0.xsd">
+
+	
+	<bean id="urlMapping"
+			class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
+		<property name="order"><value>2</value></property>
+		<property name="mappings">
+		 	<props>
+		 		<!-- Negocio   --> 
+ 				<prop key="/clientes.htm">clienteController</prop>
+ 				<prop key="/lines.htm">lineController</prop>
+ 				<prop key="/sms.htm">smsController</prop> 		
+ 				<prop key="/cargasClaroServicePriceLoad.htm">claroServicePriceLoadController</prop>
+ 				<prop key="/cargasClaroServiceStockLoad.htm">claroServiceStockLoadController</prop>
+ 				<prop key="/cargasClaroServiceAccessoryLoad.htm">claroServiceAccessoryLoadController</prop>
+ 				<prop key="/parametro.htm">parametroController</prop>
+ 				<prop key="/evaluacion.htm">evaluacionController</prop>
+ 				<prop key="/orden.htm">ordenesController</prop>
+ 				<prop key="/solicitud.htm">solicitudController</prop> 		
+ 						
+				<!-- lsoto: 31-10-19 : Implementación del servicio de tope de consumo - INICIO  -->
+				<prop key="/topeConsumo.htm">topeConsumoController</prop> 
+				<!-- lsoto: 31-10-19 : Implementación del servicio de tope de consumo - FIN  --> 
+
+				<!-- lsoto: 23-11-19 : Implementación del mantenimiento de planes y asociación con los topes de consumo - INICIO  -->
+				<prop key="/tipoPlan.htm">tipoPlanController</prop> 
+				<!-- lsoto: 23-11-19 : Implementación del mantenimiento de planes y asociación con los topes de consumo - FIN  --> 
+
+	 			<!-- Seguridad   --> 
+				<prop key="/login.htm">loginController</prop>
+				<prop key="/inicio.htm">inicioController</prop>
+				
+				<!-- Administrador -->
+	 			<prop key="/usuario.htm">usuarioController</prop>
+	 			<prop key="/perfil.htm">perfilController</prop>
+	 			<prop key="/opcion.htm">opcionController</prop>
+	 			
+			</props>
+		</property>
+	</bean>
+ </beans>

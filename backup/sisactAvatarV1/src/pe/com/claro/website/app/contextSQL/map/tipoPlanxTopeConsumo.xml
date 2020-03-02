@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" "http://www.ibatis.com/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="TipoPlanxTopeConsumo">
+	
+    <!-- se utiliza un alias para definir la clase Domain. -->
+	<typeAlias alias="tipoPlanxTopeConsumo" type="pe.com.claro.website.app.domain.TipoPlanxTopeConsumo"/>
+	
+	<insert id="insert" parameterClass="tipoPlanxTopeConsumo"> 
+		INSERT INTO
+		tipoPlanTopeConsumo (id, tipoPlan_ID, topeConsumo_ID)
+		VALUES ( NEXTVAL('tipoplantopeconsumo_id_seq'),#tipoPlan.id#,#topeConsumo.id#)
+	</insert>
+	
+	<delete id="eliminarByTopeConsumoId"  parameterClass="java.lang.Integer">
+		DELETE
+		FROM
+		tipoPlanTopeConsumo
+		WHERE
+		tipoPlan_ID = #value#
+	</delete>
+</sqlMap>

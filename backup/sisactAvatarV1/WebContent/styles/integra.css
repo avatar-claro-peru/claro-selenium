@@ -1,0 +1,619 @@
+a.txtsub {
+	text-decoration: underline;
+}
+a:hover.txtsub { 
+	text-decoration: none;
+}
+.boton {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 10px;
+	font-weight: bold;
+	background-color: #FF6600;
+	color: #FFFFFF;
+}
+.form {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	color: #000066;
+	text-decoration: none;
+	font-size: 10px;
+}
+.menuarriba {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 18px;
+	color: #FFFFFF;
+	text-decoration: none;
+}
+.enlaces {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 10px;
+	color: #000066;
+	text-decoration: underline;
+}
+.derechos {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 9px;
+	color: #000066;
+	text-decoration: none;
+}
+.menu {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 11px;
+	color: #FF6600;
+	font-weight: bold;
+	text-decoration: none;
+}
+.lisnove {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 10px;
+	color: #000066;
+}
+ul.lisnove {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 10px;
+	color: #000066;
+/*	text-decoration: none;*/
+	list-style-image: url(/WebSiteIntegra/images/dot.gif);
+	list-style-type: none;
+	margin: 5px 0px 10px 0px;
+	padding: 0px 0px 0px 35px;
+}
+.user {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 10px;
+	font-weight: bold;
+	color: #FFFFFF;
+	text-decoration: none;
+}
+.titulo {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 16px;
+	font-weight: bold;
+	color: #FF6600;
+	text-decoration: none;
+}
+
+.subtitulo {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	font-weight: bold;
+	color: #FF6600;
+}
+.texto {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 10px;
+	color: #666666;
+	text-decoration: none;
+	text-align: justify;
+}
+.fechanoticia {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 8px;
+	color: #ff6600;
+	text-decoration: none;
+}
+.textonaranja {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 10px;
+	color: #FF6600;
+}
+
+a {
+	text-decoration: none;
+	color: #000066;
+}
+a:hover {
+	text-decoration: underline;
+}
+#cuerpo {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 10px;
+	color: #666666;
+	text-decoration: none;
+	text-align: justify;
+}
+#cuerpo td{
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 10px;
+	color: #666666;
+	text-decoration: none;
+}
+
+#cuerpo a {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 10px;
+	color: #000066;
+}
+
+#menuPrincipal ul{
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 11px;
+	color: #FF6600;
+	font-weight: bold;
+	/* list-style-image: url(/WebSiteIntegra/images/flecha.gif);*/
+	margin-left: 0px;
+	margin-right: 10px;
+	padding-left: 20px;
+}
+#menuPrincipal li{
+	margin-bottom: 3px;
+}
+#menuPrincipal a{
+	color: #FF6600;
+	text-decoration: none;
+}
+#menuPrincipal a:hover{
+	text-decoration: none;
+}
+#menuPrincipal ul ul{
+	font-size: 10px;
+	color: #000066;
+	font-weight: normal;
+	list-style-image: url(/WebSiteIntegra/images/dot-blanco.gif);
+	padding-left: 0px;
+	margin-left: 0px;
+	margin-bottom: 15px;
+}
+#menuPrincipal ul ul li{
+	list-style-type: none;
+	margin-top: 0px;
+	margin-bottom: 0px;
+	padding: 2px 0px 2px 0px;
+}
+#menuPrincipal ul ul a{
+	color: #000066;
+	text-decoration: none
+	
+}
+#menuPrincipal ul ul a:hover{
+	text-decoration: none;
+	color: #ff6600;
+}
+#menuderecha ul{
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 10px;
+	color: #000066;
+	padding: 0px 0px 0px 0px;
+	margin: 0px 0px 0px 0px;
+	list-style-image: url(/WebSiteIntegra/images/dot-blanco.gif);
+}
+#menuderecha ul li{
+	list-style-type: none;
+	margin-top: 0px;
+	margin-bottom: 0px;
+	padding: 1px 0px 1px 0px;
+}
+#menuderecha a{
+	text-decoration: underline;
+}
+#menuderecha a:hover{
+	text-decoration: none;
+}
+
+#tercernivel {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 10px;
+	color: #000066;
+	border: 1px solid #000066;
+	padding: 2px 17px 2px 17px;
+	margin-bottom: 10px;
+}
+#tercernivel a{
+	text-decoration: underline;
+}
+#tercernivel a:hover{
+	text-decoration: underline;
+	color: #ff6600;
+}
+
+.bordetabla{
+	border-left: 1px solid #000066;
+	border-top: 1px solid #000066;
+}
+.td01{
+	padding: 4px;
+	background-color: #FF6600;
+	color: #FFFFFF;
+	font-weight: bold;
+	font-size: 12px;
+}
+#cuerpo .td01Izquierda{
+	padding: 4px;
+	background-color: #FF6600;
+	color: #FFFFFF;
+	font-weight: bold;
+	font-size: 10px;
+	text-align: left;
+}
+#cuerpo .td02{
+	padding: 4px;
+	border-bottom: 1px solid white;
+	border-right: 1px solid white;
+}
+body {
+	background-repeat: repeat-x;
+	background-color: #FFFFFF;
+
+	scrollbar-base-color:#EEEEEE;
+	scrollbar-darkshadow-color :#EEEEEE;
+	scrollbar-arrow-color:#003399;
+}
+
+#mapa a{
+	color: #FF6600;
+}
+#tabladisplay td{
+	padding: 4px;
+	border-bottom: 1px solid #000066;
+	border-right: 1px solid #000066;
+}
+tr.odd {
+  background-color: white
+}
+tr.tableRowEven, tr.even {
+  background-color: #E8E8E8
+}
+
+tr.otro {
+  background-color: red
+  color: #FFFFFF;
+}
+
+.textoDerecha {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 10px;
+	color: #666666;
+	text-decoration: none;
+	text-align: right;
+
+}
+
+
+
+
+td {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 10px;
+	color: #666666;
+	text-decoration: none;
+}
+.CajaFecha {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 10px;
+	color: #666666;
+	text-decoration: none;
+	text-align: center;
+	background-color: #E5E5E5;
+	border: none;
+}
+.CajaTexto {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 10px;
+	color: #666666;
+	text-decoration: none;
+	text-align: left;
+	border: 1px solid #666666;
+}
+.CajaTextoCapital {
+	text-transform:uppercase;
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 10px;
+	color: #666666;
+	text-decoration: none;
+	text-align: left;
+	border: 1px solid #666666;
+}
+.RadioButton {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 10px;
+	color: #666666;
+	text-decoration: none;
+	text-align: center;
+}
+.tit {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 18px;
+	font-weight: bold;
+	color: #FF6600;
+	text-decoration: none;
+}
+.linkdisclaimer:active {
+	COLOR: #000066;
+	FONT: bold 12px Verdana, Arial, Helvetica, sans-serif;
+	text-decoration: underline;
+}
+.linkdisclaimer {
+	COLOR: #000066;
+	FONT: bold 12px Verdana, Arial, Helvetica, sans-serif;
+	text-decoration: underline;
+}
+.linkdisclaimer:visited {
+	COLOR: #000066;
+	FONT: bold 12px Verdana, Arial, Helvetica, sans-serif;
+	text-decoration: underline;
+}
+.linkdisclaimer:hover {
+	COLOR: #FF6600;
+	FONT: bold 12px Verdana, Arial, Helvetica, sans-serif;
+	text-decoration: none;
+}
+.linkBono:active {
+	COLOR: #ff6600;
+	FONT: bold 12px Verdana, Arial, Helvetica, sans-serif;
+	text-decoration: none;
+}
+.linkBono {
+	COLOR: #ff6600;
+	FONT: bold 12px Verdana, Arial, Helvetica, sans-serif;
+	text-decoration: none;
+}
+.linkBono:visited {
+	COLOR: #ff6600;
+	FONT: bold 12px Verdana, Arial, Helvetica, sans-serif;
+	text-decoration: none;
+}
+.linkBono:hover {
+	COLOR: #000066;
+	FONT: bold 12px Verdana, Arial, Helvetica, sans-serif;
+	text-decoration: none;
+}
+
+.linkBotton:active {
+	COLOR: #FF6600;
+	FONT: italic normal 10px Verdana, Arial, Helvetica, sans-serif;
+	text-decoration: underline;
+}
+.linkBotton {
+	COLOR: #FF6600;
+	FONT: italic normal 10px Verdana, Arial, Helvetica, sans-serif;
+	text-decoration: underline;
+}
+.linkBotton:visited {
+	COLOR: #FF6600;
+	FONT: italic normal 10px Verdana, Arial, Helvetica, sans-serif;
+	text-decoration: underline;
+}
+.linkBotton:hover {
+	COLOR: #000066;
+	FONT: italic normal 10px Verdana, Arial, Helvetica, sans-serif;
+	text-decoration: none;
+}
+.linkBotton2:active {
+	COLOR: #FF6600;
+	FONT: normal 10px Verdana, Arial, Helvetica, sans-serif;
+	text-decoration: underline;
+}
+.linkBotton2 {
+	COLOR: #FF6600;
+	FONT: normal 10px Verdana, Arial, Helvetica, sans-serif;
+	text-decoration: underline;
+}
+.linkBotton2:visited {
+	COLOR: #FF6600;
+	FONT: normal 10px Verdana, Arial, Helvetica, sans-serif;
+	text-decoration: underline;
+}
+.linkBotton2:hover {
+	COLOR: #000066;
+	FONT: normal 10px Verdana, Arial, Helvetica, sans-serif;
+	text-decoration: none;
+}
+.linkNormal:active {
+	COLOR: #ff6600;
+	FONT: bold 10px Verdana, Arial, Helvetica, sans-serif;
+	text-decoration: none;
+}
+.linkNormal {
+	COLOR: #ff6600;
+	FONT: bold 10px Verdana, Arial, Helvetica, sans-serif;
+	text-decoration: none;
+}
+.linkNormal:visited {
+	COLOR: #ff6600;
+	FONT: bold 10px Verdana, Arial, Helvetica, sans-serif;
+	text-decoration: none;
+}
+.linkNormal:hover {
+	COLOR: #000066;
+	FONT: bold 10px Verdana, Arial, Helvetica, sans-serif;
+	text-decoration: underline;
+}
+.linkBlanco:active {
+	COLOR: #FFFFFF;
+	FONT: bold 10px Verdana, Arial, Helvetica, sans-serif;
+	text-decoration: none;
+}
+.linkBlanco {
+	COLOR: #FFFFFF;
+	FONT: bold 10px Verdana, Arial, Helvetica, sans-serif;
+	text-decoration: none;
+}
+.linkBlanco:visited {
+	COLOR: #FFFFFF;
+	FONT: bold 10px Verdana, Arial, Helvetica, sans-serif;
+	text-decoration: none;
+}
+.linkBlanco:hover {
+	COLOR: #000066;
+	FONT: bold 10px Verdana, Arial, Helvetica, sans-serif;
+	text-decoration: none;
+}
+.linkCeleste:active {
+	COLOR: #3399CC;
+	FONT: normal 10px Verdana, Arial, Helvetica, sans-serif;
+	text-decoration: underline;
+}
+.linkCeleste {
+	COLOR: #3399CC;
+	FONT: normal 10px Verdana, Arial, Helvetica, sans-serif;
+	text-decoration: underline;
+}
+.linkCeleste:visited {
+	COLOR: #3399CC;
+	FONT: normal 10px Verdana, Arial, Helvetica, sans-serif;
+	text-decoration: underline;
+}
+.linkCeleste:hover {
+	COLOR: #3399CC;
+	FONT: normal 10px Verdana, Arial, Helvetica, sans-serif;
+	text-decoration: none;
+}
+.NOC {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 10px;
+	color: #333333;
+	text-decoration: none;
+	background-color: #E5E5E5;
+	filter: FlipH;
+	border: thin solid #999999;
+	font-weight: bold;
+	list-style-position: outside;
+	list-style-type: none;
+	cursor: hand;
+}
+.sub_tit {
+
+	COLOR: #ff6600;
+	FONT: bold 12px Verdana, Arial, Helvetica, sans-serif;
+	text-decoration: none;
+}
+.text {
+
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 10px;
+	color: #FFFFFF;
+	text-decoration: none;
+}
+.CajaTexto_gris {
+
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 10px;
+	color: #666666;
+	text-decoration: none;
+	text-align: left;
+	background-color: #CCCCCC;
+	border: none;
+}
+.botonGris {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	color: #FFFFFF;
+	text-decoration: none;
+	text-align: center;
+	background-color: #000066;
+	border: none #0066CC;
+	font-weight: bold;
+}
+.titING {
+
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 18px;
+	font-weight: bold;
+	color: #FFFFFF;
+	text-decoration: none;
+}
+.textTitING {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 10px;
+	font-weight: bold;
+	color: #3399CC;
+	text-decoration: none;
+}
+.textING {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 10px;
+	color: #000000;
+	text-decoration: none;
+}
+
+}
+.CajaTexto {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 10px;
+	color: #666666;
+	text-decoration: none;
+	text-align: left;
+	border: 1px solid #666666;
+}
+.linkNormal:active {
+	COLOR: #ff6600;
+	FONT: bold 10px Verdana, Arial, Helvetica, sans-serif;
+	text-decoration: none;
+}
+.linkNormal {
+	COLOR: #ff6600;
+	FONT: bold 10px Verdana, Arial, Helvetica, sans-serif;
+	text-decoration: none;
+}
+.linkNormal:visited {
+	COLOR: #ff6600;
+	FONT: bold 10px Verdana, Arial, Helvetica, sans-serif;
+	text-decoration: none;
+}
+.linkNormal:hover {
+	COLOR: #000066;
+	FONT: bold 10px Verdana, Arial, Helvetica, sans-serif;
+	text-decoration: underline;
+}
+.linkBlanco {
+	COLOR: #FFFFFF;
+	FONT: bold 10px Verdana, Arial, Helvetica, sans-serif;
+	text-decoration: none;
+}
+.linkBlanco:active {
+	COLOR: #FFFFFF;
+	FONT: bold 10px Verdana, Arial, Helvetica, sans-serif;
+	text-decoration: none;
+}
+.linkBlanco:visited {
+	COLOR: #FFFFFF;
+	FONT: bold 10px Verdana, Arial, Helvetica, sans-serif;
+	text-decoration: none;
+}
+.linkBlanco:hover {
+	COLOR: #000066;
+	FONT: bold 10px Verdana, Arial, Helvetica, sans-serif;
+	text-decoration: none;
+}
+.tit {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 18px;
+	font-weight: bold;
+	color: #ff6600;
+	text-decoration: none;
+
+}
+
+}
+.linkBotton2 {
+	COLOR: #FF6600;
+	FONT: normal 10px Verdana, Arial, Helvetica, sans-serif;
+	text-decoration: underline;
+}
+.linkBotton2:visited {
+	COLOR: #FF6600;
+	FONT: normal 10px Verdana, Arial, Helvetica, sans-serif;
+	text-decoration: underline;
+}
+.linkBotton2:hover {
+	COLOR: #000066;
+	FONT: normal 10px Verdana, Arial, Helvetica, sans-serif;
+	text-decoration: none;
+}
+.textoblanco {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 10px;
+	font-weight: bold;
+	color: #FFFFFF;
+}
+.texto1 {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 10px;
+	color: #666666;
+	text-decoration: none;
+	text-align: default;
+}
+.textonaranja {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 10px;
+	color: #FF6600;
+}

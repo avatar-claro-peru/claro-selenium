@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" "http://www.ibatis.com/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="PerfilOpcion">
+	
+    <!-- se utiliza un alias para definir la clase Domain. -->
+	<typeAlias alias="perfilOpcion" type="pe.com.claro.website.seguridad.domain.PerfilOpcion"/>
+	
+	<insert id="insert" parameterClass="perfilOpcion"> 
+		INSERT INTO
+		perfil_opcion (ID, perfil_id, opcion_id)
+		VALUES ( NEXTVAL('perfil_opcion_id_seq'),#perfil.id#,#opcion.id#)
+	</insert>
+	
+	<delete id="deleteByPerfilId"  parameterClass="java.lang.Integer">
+		DELETE
+		FROM
+		perfil_opcion
+		WHERE
+		perfil_id = #value#
+	</delete>
+	
+</sqlMap>

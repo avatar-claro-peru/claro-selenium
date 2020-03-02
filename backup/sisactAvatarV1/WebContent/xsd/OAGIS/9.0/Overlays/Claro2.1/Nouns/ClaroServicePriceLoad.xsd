@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema targetNamespace="http://www.claroservicepriceload.com/ClaroServicePriceLoad" elementFormDefault="qualified" xmlns="http://www.w3.org/2001/XMLSchema" xmlns:myco="http://www.claroservicepriceload.com/ClaroServicePriceLoad">
+
+    <complexType name="ShowCheckProcessStatusType">
+    	<sequence>
+    		<element name="IdEvent" type="string" maxOccurs="1" minOccurs="1"></element>
+    		<element name="listaResponseOpcional"
+    			type="myco:responseOpcionalType" minOccurs="0" maxOccurs="unbounded">
+    		</element>
+    		<element name="responseStatus" type="myco:ResponseStatus" maxOccurs="1" minOccurs="1"></element>
+    		<element name="claroFault" type="myco:ClaroFault" maxOccurs="1" minOccurs="1"></element>
+    	</sequence>
+    </complexType>
+    
+    
+    <complexType name="GetCheckProcessStatusType">
+    	<sequence>
+    		<element name="user" type="string" maxOccurs="1" minOccurs="1"></element>
+    		<element name="password" type="string" maxOccurs="1" minOccurs="1"></element>
+    		<element name="listaRequestOpcional" type="myco:RequestOpcionalType" minOccurs="0" maxOccurs="unbounded"></element>
+    	</sequence>
+    </complexType>
+    
+    <complexType name="GetExecutePriceProcessType">
+    	<sequence>
+    		<element name="user" type="string" maxOccurs="1" minOccurs="1"></element>
+    		<element name="password" type="string" maxOccurs="1" minOccurs="1"></element>
+    		<element name="listaRequestOpcional" type="myco:RequestOpcionalType" minOccurs="0" maxOccurs="unbounded"></element>
+    	</sequence>
+    </complexType>
+    
+    <complexType name="ShowExecutePriceProcessType">
+    	<sequence>
+    		<element name="IdEvent" type="string" maxOccurs="1" minOccurs="1"></element>
+    		<element name="listaResponseOpcional"
+    			type="myco:responseOpcionalType" minOccurs="0" maxOccurs="unbounded">
+    		</element>
+    		<element name="responseStatus" type="myco:ResponseStatus" maxOccurs="1" minOccurs="1"></element>
+    		<element name="claroFault" type="myco:ClaroFault" maxOccurs="1" minOccurs="1"></element>
+    	</sequence>
+    </complexType>
+
+    <element name="GetCheckProcessStatusElement" type="myco:GetCheckProcessStatusType"></element>
+
+    <element name="GetExecutePriceProcessElement" type="myco:GetExecutePriceProcessType"></element>
+
+    <element name="ShowCheckProcessStatusElement" type="myco:ShowCheckProcessStatusType"></element>
+
+    <element name="ShowExecutePriceProcessElement" type="myco:ShowExecutePriceProcessType"></element>
+
+    <complexType name="RequestOpcionalType">
+    	<sequence>
+    		<element name="campo" type="string" maxOccurs="1" minOccurs="1"></element>
+    		<element name="valor" type="string" maxOccurs="1" minOccurs="0"></element>
+    	</sequence>
+    </complexType>
+
+    <complexType name="responseOpcionalType">
+    	<sequence>
+    		<element name="campo" type="string" maxOccurs="1" minOccurs="1"></element>
+    		<element name="valor" type="string" maxOccurs="1" minOccurs="0"></element>
+    	</sequence>
+    </complexType>
+
+    <complexType name="ResponseStatus">
+    	<sequence>
+    		<element name="estado" type="int" maxOccurs="1" minOccurs="0"></element>
+    		<element name="codigoRespuesta" type="string" maxOccurs="1" minOccurs="1"></element>
+    		<element name="descripcionRespuesta" type="string" maxOccurs="1" minOccurs="1"></element>
+    		<element name="ubicacionError" type="string" maxOccurs="1" minOccurs="0"></element>
+    		<element name="fecha" type="dateTime" maxOccurs="1" minOccurs="0"></element>
+    		<element name="origen" type="string" maxOccurs="1" minOccurs="0"></element>
+    	</sequence>
+    </complexType>
+
+    <complexType name="ClaroFault">
+    	<sequence>
+    		<element name="idAuditoria" type="string" maxOccurs="1" minOccurs="1"></element>
+    		<element name="codigoError" type="string" maxOccurs="1" minOccurs="1"></element>
+    		<element name="descripcionError" type="string" maxOccurs="1" minOccurs="1"></element>
+    		<element name="ubicacionError" type="string" maxOccurs="1" minOccurs="0"></element>
+    		<element name="fecha" type="dateTime" maxOccurs="1" minOccurs="0"></element>
+    		<element name="errorOrigen" type="anyType" maxOccurs="1" minOccurs="0"></element>
+    	</sequence>
+    </complexType>
+
+</schema>

@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions name="ClaroServicePriceLoadType"
+	targetNamespace="http://www.claroservicepriceload.com/ClaroServicePriceLoad"
+	xmlns:myco="http://www.claroservicepriceload.com/ClaroServicePriceLoad"
+	xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsd1="http://claro.com.pe/HeaderGeneric">
+	<wsdl:types>
+		<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+			<xsd:import namespace="http://claro.com.pe/HeaderGeneric"
+				schemaLocation="../../xsd/OAGIS/9.0/Overlays/Claro2.1/Header/HeaderGeneric.xsd">
+			</xsd:import>
+			<xsd:import
+				namespace="http://www.claroservicepriceload.com/ClaroServicePriceLoad"
+				schemaLocation="../../xsd/OAGIS/9.0/Overlays/Claro2.1/Nouns/ClaroServicePriceLoad.xsd">
+			</xsd:import>
+		</xsd:schema>
+	</wsdl:types>
+
+
+
+	<wsdl:message name="GetCheckProcessStatusMessage">
+		<wsdl:part name="GetCheckProcessStatusElement" element="myco:GetCheckProcessStatusElement">
+		</wsdl:part>
+		<wsdl:part name="HeaderRequest" element="xsd1:HeaderRequest"></wsdl:part>
+
+	</wsdl:message>
+	<wsdl:message name="ShowCheckProcessStatusMessage">
+		<wsdl:part name="ShowCheckProcessStatusElement" element="myco:ShowCheckProcessStatusElement">
+		</wsdl:part>
+		<wsdl:part name="HeaderResponse" element="xsd1:HeaderResponse"></wsdl:part>
+	</wsdl:message>
+	<wsdl:message name="GetExecutePriceProcessMessage">
+		<wsdl:part name="GetExecutePriceProcessElement" element="myco:GetExecutePriceProcessElement">
+		</wsdl:part>
+		<wsdl:part name="HeaderRequest" element="xsd1:HeaderRequest"></wsdl:part>
+	</wsdl:message>
+	<wsdl:message name="ShowExecutePriceProcessMessage">
+		<wsdl:part name="ShowExecutePriceProcessElement" element="myco:ShowExecutePriceProcessElement">
+		</wsdl:part>
+		<wsdl:part name="HeaderResponse" element="xsd1:HeaderResponse"></wsdl:part>
+	</wsdl:message>
+	<wsdl:portType name="ClaroServicePriceLoad">
+		<wsdl:operation name="CheckProcessStatus">
+			<wsdl:input message="myco:GetCheckProcessStatusMessage" />
+			<wsdl:output message="myco:ShowCheckProcessStatusMessage" />
+		</wsdl:operation>
+		<wsdl:operation name="ExecutePriceProcess">
+			<wsdl:input message="myco:GetExecutePriceProcessMessage"></wsdl:input>
+			<wsdl:output message="myco:ShowExecutePriceProcessMessage"></wsdl:output>
+		</wsdl:operation>
+	</wsdl:portType>
+	<wsdl:binding name="ClaroServicePriceLoadSOAP" type="myco:ClaroServicePriceLoad">
+		<soap:binding style="document"
+			transport="http://schemas.xmlsoap.org/soap/http" />
+
+		<wsdl:operation name="CheckProcessStatus">
+			<soap:operation
+				soapAction="http://www.claroservicepriceload.com/ClaroServicePriceLoad/NewOperation" />
+			<wsdl:input>
+				<soap:header message="myco:GetCheckProcessStatusMessage"
+					part="HeaderRequest" use="literal" />
+				<soap:body parts="GetCheckProcessStatusElement" use="literal" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap:header message="myco:ShowCheckProcessStatusMessage"
+					part="HeaderResponse" use="literal" />
+				<soap:body parts="ShowCheckProcessStatusElement" use="literal" />
+			</wsdl:output>
+		</wsdl:operation>
+
+		<wsdl:operation name="ExecutePriceProcess">
+			<soap:operation
+				soapAction="http://www.claroservicepriceload.com/ClaroServicePriceLoad/NewOperation" />
+			<wsdl:input>
+				<soap:header message="myco:GetExecutePriceProcessMessage"
+					part="HeaderRequest" use="literal" />
+				<soap:body parts="GetExecutePriceProcessElement" use="literal" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap:header message="myco:ShowExecutePriceProcessMessage"
+					part="HeaderResponse" use="literal" />
+				<soap:body parts="ShowExecutePriceProcessElement" use="literal" />
+			</wsdl:output>
+		</wsdl:operation>
+
+	</wsdl:binding>
+	<wsdl:service name="ClaroServicePriceLoad">
+		<wsdl:port binding="myco:ClaroServicePriceLoadSOAP" name="processClaroServicePriceLoad">
+			<soap:address
+				location="http://localhost/webapp/wcs/services/processClaroServicePriceLoad" />
+		</wsdl:port>
+	</wsdl:service>
+</wsdl:definitions>

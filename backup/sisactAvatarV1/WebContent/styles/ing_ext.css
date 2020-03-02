@@ -1,0 +1,320 @@
+body {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 11px;
+	margin-left: 10px;
+	margin-top: 2px;
+}
+
+/*tabla para titulo principal*/
+table.mainTitle {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 18px;
+	font-weight: bold;
+	width: 750px;	
+}
+
+/*marco para botones principales*/
+table.mainButtonsFull {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 11px;
+	width: 100%;	
+}
+
+/*tabla para titulos de seccion*/
+table.detailTitleFull{
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 11px;
+	border: 0px solid Black;
+	background-color: #FF6600;
+	color: White;
+	font-weight: bold;
+	padding: 2px 2px 2px 5px;
+	width: 100%;		
+}
+
+table.generalLayoutHeader {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	color: Black;
+	font-size: 11px;	
+	text-decoration: none;
+	font-weight: normal;
+	width: 100%;
+}
+
+/*marco general*/
+table.generalLayoutFull {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	color: Black;
+	font-size: 11px;	
+	text-decoration: none;
+	font-weight: normal;
+	border: 1px solid;
+	background-color: #FFECD9;
+	padding: 4px 15px 4px 15px;
+	width: 100%;
+}
+
+/*tabla general interna */
+table.innerGeneralLayout {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	color: Black;
+	font-size: 11px;	
+	text-decoration: none;
+	font-weight: normal;
+	padding: 2px 2px 2px 2px;
+}
+
+/*tabla marco para tablas de datos, por ejemplo, eventos */
+table.dataTableLayoutFull {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	color: Black;
+	font-size: 11px;	
+	text-decoration: none;
+	font-weight: normal;
+	/*	background-color: #F2F2F7;*/
+	padding: 2px 0px 2px 0px;
+	border-bottom: 1px solid;
+	width: 100%;	
+}
+
+/* tabla de datos interna*/
+table.innerDataTableLayout { 
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 11px;
+	padding: 2px 2px 2px 5px;
+	width: 100%;
+	}
+
+table.innerDataTableLayout tr.orange {
+	background: #000066; 
+	color: White;
+	font-weight: bold;
+}
+
+table.innerDataTableLayout tr.white { 
+	background: White; 
+	color: Black; 
+}
+
+table.innerDataTableLayout tr.gray { 
+//	background: #CCCC99; 
+   background: #E4E4EF;
+	color: Black;
+}
+
+table.innerDataTableLayout td { 
+	height: 18px;
+	padding: 1px 2px 2px 1px;
+}
+
+td.subTitle {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+ 	font-size: 11px;
+   font-weight: bold;	
+	border-bottom: 1px solid #FF6600;
+}
+	
+a.defaultLink {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 11px;
+	color: #000066;
+   text-decoration: none;	
+}
+
+a.defaultLink:hover {
+	text-decoration: underline;
+}
+
+/* estilo general para inputs */
+input.text.default {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	color: Black;
+	text-decoration: none;
+}
+
+input.text.defaultImporte {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 11px;
+	color: Black;
+	text-decoration: none;
+	border: 0;
+	background-color: #FFECD9;
+	text-align: right;
+}
+
+input.text.defaultNumber {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 11px;
+	color: Black;
+	text-decoration: none;
+	text-align: right;
+}
+
+input.text.defaultMoneda {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 11px;
+	color: Black;
+	text-decoration: none;
+	border: 1;
+	background-color: #FFECD9;
+}
+
+/*recuadros del calendario*/
+input.calendarDay {
+  	background-color: #FFFFFF;
+  	color: #000066;
+  	font-family: Verdana;
+  	font-size: 8pt;
+  	font-weight: bold;
+  	border: 1 solid #FFFFFF;
+  	cursor:hand
+}
+
+select.default {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 11px;
+	color: Black;
+	text-decoration: none;
+/*	border: 1px solid #999999;*/	
+}
+
+input.button.gray {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+ 	background: #666666;
+ 	border: 1px ridge #CCCCCC;
+ 	color: White;
+ 	font-size: 10px;
+ 	cursor:hand;
+   font-weight: bold;
+}
+
+input.button.grayDisabled {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+ 	background: #666666;
+ 	border: 1px ridge #CCCCCC;
+ 	color: #CCCCCC;
+ 	font-size: 10px;
+  	cursor:default;
+    font-weight: bold;
+}
+
+input.button.orange {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+  	background: #FF6600;
+  	border: 1px ridge #FF9966;
+  	color: #FFFFFF;
+  	font-size: 10px;
+  	cursor:hand;
+   font-weight: bold;
+ }
+
+/*titulo del menu*/
+.tituloMenu {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	color: #FF6600;
+	text-decoration: none;
+	font-weight: bold;
+	font-size: 13px;
+ 	/*cursor:hand;	*/
+}
+
+/*Sub titulo*/
+.subTitulo {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	color: #000066;
+	text-decoration: none;
+	font-weight: bold;
+	font-size: 13px;
+ 	cursor:hand;	
+}
+
+.t1 {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	color: #000066;
+	text-decoration: none;
+	font-size: 11px;
+ 	cursor:hand;	
+}
+.t2 {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	color: #FF6600;
+	text-decoration: none;
+	font-weight: bold;
+	font-size: 11px;
+ 	cursor:hand;	
+}
+.t3 {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	color: #000066;
+	text-decoration: none;
+	font-size: 13px;
+ 	/*cursor:hand;	*/
+}
+.t4 {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	color: black;
+	text-decoration: none;
+	font-size: 13px;
+ 	cursor:hand;	
+}
+.t6 {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	color: #FF6600;
+	text-decoration: none;
+	font-weight: bold;
+	font-size: 13px;
+ 	cursor:hand;	
+}
+.t7 {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	color: #333333;
+	text-decoration: underline;
+	font-weight: bold;
+	font-size: 10pt;
+}
+
+
+/*	
+	
+INPUT.number {
+	font:14px verdana;
+	color:white;
+	background-color: #ff9933 ;
+	border:solid;
+	border-width:thin;
+	border-style:solid;
+	border-color: #ff6600;
+	cursor:pointer;
+	width: 25pt;
+	height: 25pt;
+}
+INPUT.opcion {
+	font:11px verdana;
+	color:white;
+	background-color: #ff9933 ;
+	border:solid;
+	border-width:thin;
+	border-style:solid;
+	border-color: #ff6600;
+	cursor:pointer;
+	width: 53pt;
+	height:52pt;
+}
+INPUT.opcionGris {
+	font:11px verdana;
+	color:white;
+	background-color: #606080 ;
+	border:solid;
+	border-width:thin;
+	border-style:solid;
+	border-color: #606080;
+	cursor:pointer;
+	width: 53pt;
+	height:25pt;
+}
+*/
+
+.texto {
+	FONT-SIZE: 10px; COLOR: #666666; FONT-FAMILY: Verdana, Arial, Helvetica, sans-serif; TEXT-ALIGN: justify; TEXT-DECORATION: none
+}

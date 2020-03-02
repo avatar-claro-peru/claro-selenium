@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:util="http://www.springframework.org/schema/util"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xsi:schemaLocation="
+http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.0.xsd
+http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-2.0.xsd
+http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.0.xsd
+http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-2.0.xsd">
+
+	<!-- Services ************************************************************************************* -->	
+	<bean id="clienteServiceBean"  parent="baseTransactionProxy" >
+		<property name="target" >
+		<bean class="pe.com.claro.website.app.service.impl.ClienteServiceImpl" >
+			<property name="dao" ref="daoClienteBean"></property>
+		</bean >
+		</property>
+	</bean>
+	
+	<bean id="lineServiceBean"  parent="baseTransactionProxy" >
+		<property name="target" >
+		<bean class="pe.com.claro.website.app.service.impl.LineServiceImpl" >
+			<property name="dao" ref="daoLineBean"></property>
+		</bean >
+		</property>
+	</bean>
+	
+	<bean id="smsServiceBean"  parent="baseTransactionProxy" >
+		<property name="target" >
+		<bean class="pe.com.claro.website.app.service.impl.SmsServiceImpl" >
+			<property name="dao" ref="daoSmsBean"></property>
+		</bean >
+		</property>
+	</bean>
+
+	<bean id="claroServicePriceLoadServiceBean"  parent="baseTransactionProxy" >
+		<property name="target" >
+		<bean class="pe.com.claro.website.app.service.impl.ClaroServicePriceLoadServiceImpl" >
+		</bean >
+		</property>
+	</bean>
+	<bean id="claroServiceStockLoadServiceBean"  parent="baseTransactionProxy" >
+		<property name="target" >
+		<bean class="pe.com.claro.website.app.service.impl.ClaroServiceStockLoadServiceImpl" >
+		</bean >
+		</property>
+	</bean>
+	
+	<bean id="claroServiceSyncOrderServiceBean"  parent="baseTransactionProxy" >
+		<property name="target" >
+		<bean class="pe.com.claro.website.app.service.impl.ClaroServiceSyncOrderServiceImpl" >
+		</bean >
+		</property>
+	</bean>
+	
+	<bean id="claroServiceAccessoryLoadServiceBean"  parent="baseTransactionProxy" >
+		<property name="target" >
+		<bean class="pe.com.claro.website.app.service.impl.ClaroServiceAccessoryLoadServiceImpl" >
+		</bean >
+		</property>
+	</bean>
+
+	<bean id="parametroServiceBean"  parent="baseTransactionProxy" >
+		<property name="target" >
+		<bean class="pe.com.claro.website.app.service.impl.ParametroServiceImpl" >
+			<property name="dao" ref="daoParametroBean"></property>
+		</bean >
+		</property>
+	</bean>
+
+	<bean id="evaluacionServiceBean"  parent="baseTransactionProxy" >
+		<property name="target" >
+		<bean class="pe.com.claro.website.app.service.impl.EvaluacionServiceImpl" >
+			<property name="dao" ref="daoEvaluacionBean"></property>
+			<property name="daoOrcomment" ref="daoOrcommentBean"></property>
+		</bean >
+		
+		</property>
+		
+	</bean>
+	
+	<bean id="solicitudServiceBean"  parent="baseTransactionProxy" >
+		<property name="target" >
+		<bean class="pe.com.claro.website.app.service.impl.SolicitudServiceImpl" >
+			<property name="dao" ref="daoSolicitudBean"></property>
+		</bean >
+		</property>
+	</bean>
+	
+	<bean id="ordenServiceBean"  parent="baseTransactionProxy" >
+		<property name="target" >
+		<bean class="pe.com.claro.website.app.service.impl.OrdenesServiceImpl" >
+			<property name="dao" ref="daoOrdenBean"></property>
+			<property name="daoOrcomment" ref="daoOrcommentBean"></property>
+		</bean >
+		</property>
+	</bean>
+	
+	<!-- lsoto: 31-10-19 : Implementación del servicio de tope de consumo - INICIO -->
+	<bean id="topeConsumoServiceBean"  parent="baseTransactionProxy" >
+		<property name="target" >
+		<bean class="pe.com.claro.website.app.service.impl.TopeConsumoServiceImpl" >
+			<property name="dao" ref="daoTopeConsumoBean"></property>
+		</bean >
+		</property>
+	</bean>
+	<!-- lsoto: 31-10-19 : Implementación del servicio de tope de consumo - FIN -->
+	
+	<!-- lsoto: 29-01-20 : Implementación del historial de SyncOrder por orden - INICIO -->
+	<bean id="detalleOrdenServiceBean"  parent="baseTransactionProxy" >
+		<property name="target" >
+		<bean class="pe.com.claro.website.app.service.impl.DetalleOrdenServiceImpl" >
+			<property name="dao" ref="daoDetalleOrdenBean"></property>
+		</bean >
+		</property>
+	</bean>
+	<!-- lsoto: 29-01-20 : Implementación del historial de SyncOrder por orden - FIN -->
+	
+	<!-- lsoto: 23-11-19 : Implementación del mantenimiento de planes y asociación con los topes de consumo - INICIO -->
+	<bean id="tipoPlanServiceBean"  parent="baseTransactionProxy" >
+		<property name="target" >
+		<bean class="pe.com.claro.website.app.service.impl.TipoPlanServiceImpl" >
+			<property name="dao" ref="daoTipoPlanBean"></property>
+		</bean >
+		</property>
+	</bean>
+	<!-- lsoto: 23-11-19 : Implementación del mantenimiento de planes y asociación con los topes de consumo - FIN -->
+	
+	<bean id="ordenServiceSyncBean"  parent="baseTransactionProxy" >
+		<property name="target" >
+		<bean class="pe.com.claro.website.app.service.impl.ClaroServiceSyncOrderServiceImpl" >
+			
+		</bean >
+		</property>
+	</bean>
+	
+	<!-- DAOs ******************************************************************************************** -->
+	<bean id="daoClienteBean" 
+		class="pe.com.claro.website.app.dao.ibatis.ClienteDAOiBatis" 
+		parent="baseIbatisDAO">
+	</bean>
+	
+	<bean id="daoLineBean" 
+		class="pe.com.claro.website.app.dao.ibatis.LineDAOiBatis" 
+		parent="baseIbatisDAO">
+	</bean>
+	
+	<bean id="daoSmsBean" 
+		class="pe.com.claro.website.app.dao.ibatis.SmsDAOiBatis" 
+		parent="baseIbatisDAO">
+	</bean>
+		
+	<bean id="daoParametroBean" 
+		class="pe.com.claro.website.app.dao.ibatis.ParametroDAOiBatis" 
+		parent="baseIbatisDAO">
+	</bean>
+	
+	<bean id="daoEvaluacionBean" 
+		class="pe.com.claro.website.app.dao.ibatis.EvaluacionDAOiBatis" 
+		parent="baseIbatisDAO">
+	</bean>
+	<bean id="daoOrdenBean" 
+		class="pe.com.claro.website.app.dao.ibatis.OrdenDAOiBatis" 
+		parent="baseIbatisDAO">
+	</bean>
+	<bean id="daoSolicitudBean" 
+		class="pe.com.claro.website.app.dao.ibatis.SolicitudDAOiBatis" 
+		parent="baseIbatisDAO">
+	</bean>
+	
+	<!-- lsoto: 31-10-19 : Implementación del servicio de tope de consumo - INICIO -->
+	<bean id="daoTopeConsumoBean" 
+		class="pe.com.claro.website.app.dao.ibatis.TopeConsumoDAOiBatis" 
+		parent="baseIbatisDAO">
+	</bean>
+	<!-- lsoto: 31-10-19 : Implementación del servicio de tope de consumo - FIN -->
+	
+	<!-- lsoto: 29-01-20 : Implementación del historial de SyncOrder por orden  - INICIO -->
+	<bean id="daoDetalleOrdenBean" 
+		class="pe.com.claro.website.app.dao.ibatis.DetalleOrdenDAOiBatis" 
+		parent="baseIbatisDAO">
+	</bean>
+	<!-- lsoto: 29-01-20 : Implementación del historial de SyncOrder por orden  - FIN -->
+	
+	<!-- lsoto: 23-11-19 : Implementación del mantenimiento de planes y asociación con los topes de consumo - INICIO -->
+	<bean id="daoTipoPlanBean" 
+		class="pe.com.claro.website.app.dao.ibatis.TipoPlanDAOiBatis" 
+		parent="baseIbatisDAO">
+	</bean>
+	<!-- lsoto: 23-11-19 : Implementación del mantenimiento de planes y asociación con los topes de consumo - FIN -->
+	
+	<!-- jcisneros_031219 : Implementación para mostrar la descripcion y codigo de un tope de consumo - INICIO -->
+	<bean id="daoOrcommentBean" 
+		class="pe.com.claro.website.app.dao.ibatis.OrcommentDAOiBatis" 
+		parent="baseIbatisDAO">
+	</bean>
+	<!-- jcisneros_031219 : Implementación para mostrar la descripcion y codigo de un tope de consumo - FIN -->
+	
+</beans>

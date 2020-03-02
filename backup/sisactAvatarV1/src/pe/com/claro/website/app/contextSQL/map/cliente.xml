@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" "http://www.ibatis.com/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="Cliente">
+	
+    <!-- se utiliza un alias para definir la clase Domain. -->
+	<typeAlias alias="cliente" type="pe.com.claro.website.app.domain.Cliente"/>
+	
+	<!-- para traer una lista de usuarios  -->
+	<resultMap id="resultadoCliente" class="cliente">
+		<result property="id" column="id" />
+	    <result property="nombre" column="nombre" />
+	    <result property="tipo_doc" column="tipo_doc" />
+	    <result property="num_doc" column="num_doc" />
+	    <result property="correo" column="correo" />
+	    <result property="estado" column="estado" />
+	    <!--  lsoto: 04-07-19: Traer en el resultado de la evaluación: INICIO -->	
+	    <result property="pre_evaluacion" column="pre_evaluacion" />
+	    <!--  lsoto: 04-07-19: Traer en el resultado de la evaluación: FIN -->
+	</resultMap>
+	
+	<!--  PARA LOS GENERICOS INICIO -->		
+ 
+ 	<select id="list" parameterClass="cliente"  resultMap="resultadoCliente">
+ 		select * from cliente
+ 		where num_doc like #num_doc# and nombre like #nombre#
+ 	</select>
+ 	
+	<insert id="insert" parameterClass="cliente">
+		INSERT INTO
+		cliente 
+		(id,nombre,tipo_doc,num_doc,correo,estado,pre_evaluacion) 
+		VALUES
+		(NEXTVAL('cliente_id_seq'),#nombre#,#tipo_doc#,#num_doc#,#correo#,#estado#,#pre_evaluacion#)
+	</insert>
+	
+	<select id="selectByID" resultMap="resultadoCliente">
+ 		select * from cliente where id=#id#
+ 	</select>
+ 	
+ 	<update id="update" parameterClass="cliente">
+		UPDATE
+		cliente
+		SET
+		nombre = #nombre#,
+		tipo_doc = #tipo_doc#,
+		num_doc = #num_doc#,
+		correo = #correo#,
+		estado = #estado#,
+		pre_evaluacion = #pre_evaluacion#
+		WHERE
+		id = #id#
+	</update>
+	
+	<delete id="delete">
+		DELETE
+		FROM
+		cliente
+		WHERE
+		id = #id#
+	</delete>
+	<!--  PARA LOS GENERICOS FIN -->
+	
+	<select id="listForTipoNumero" parameterClass="cliente"  resultMap="resultadoCliente">
+ 		select * from cliente where tipo_doc=#tipo_doc# and num_doc = #num_doc#
+ 	</select>
+		
+</sqlMap>

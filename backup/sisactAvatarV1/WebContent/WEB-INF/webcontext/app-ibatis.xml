@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:util="http://www.springframework.org/schema/util"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation="
+http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.0.xsd
+http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-2.0.xsd
+http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.0.xsd
+http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-2.0.xsd">
+
+<!--/////////////////////////////////////////////////////////////////////////-->
+<!--                    TRANSACTION PROXY CONFIGURATION                      -->
+<!--/////////////////////////////////////////////////////////////////////////-->
+
+	<bean id="baseTransactionProxy"
+		class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean"
+		abstract="true">
+		<property name="transactionManager" ref="transactionManager" />
+		<property name="transactionAttributes">
+			<props>
+				<prop key="get*">
+				PROPAGATION_REQUIRED,
+				readOnly,ISOLATION_DEFAULT
+				</prop>
+				<prop key="*">
+				PROPAGATION_REQUIRED,
+				ISOLATION_DEFAULT
+			</prop>
+			</props>
+		</property>
+	</bean>
+	
+
+<!--/////////////////////////////////////////////////////////////////////////-->
+<!--                         IBATIS    CONFIGURATION                         -->
+<!--/////////////////////////////////////////////////////////////////////////-->
+
+	<bean id="transactionManager"
+		class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+		<property name="dataSource" ref="dataSource" />
+	</bean>
+	
+	
+	<bean id="sqlMapSite" class="org.springframework.orm.ibatis.SqlMapClientFactoryBean">
+	  
+		<property name="configLocation">
+			<value>classpath:/pe/com/claro/website/admin/contextSQL/SqlMapSisactAvatar.xml</value>
+		</property>
+		<property name="dataSource" ref="dataSource" />
+	</bean>
+	
+	<bean id="baseIbatisDAO" abstract="true">
+		<property name="dataSource" ref="dataSource" />
+		<property name="sqlMapClient"><ref local="sqlMapSite" />
+		</property>
+	</bean>
+	
+	<!-- bean id="incrementer" 
+		class="org.springframework.jdbc.support.incrementer.MySQLMaxValueIncrementer">
+		<property name="dataSource" ref="dataSource"></property>
+		<property name="incrementerName"><value>user_seq</value></property>
+		<property name="columnName"><value>value</value></property>
+	</bean -->
+	
+	
+</beans>

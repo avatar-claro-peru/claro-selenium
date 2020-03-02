@@ -1,0 +1,343 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tiles-definitions PUBLIC 
+	"-//Apache Software Foundation//DTD Tiles Configuration 1.1//EN" 
+	"http://jakarta.apache.org/struts/dtds/tiles-config_1_1.dtd">
+<tiles-definitions>
+
+
+	<!-- PERSONA  -->
+	
+	<definition name="personaSearch" extends="adminTemplate">
+		<put name="content"
+			value="/WEB-INF/jsp/modulos/persona/personaSearch.jsp" type="page" />
+	</definition>
+	
+	<definition name="personaEdit" extends="adminTemplate">
+		<put name="content"
+			value="/WEB-INF/jsp/modulos/persona/personaEdit.jsp" type="page" />
+	</definition>
+	
+	<definition name="personaNew" extends="adminTemplate">
+		<put name="content"
+			value="/WEB-INF/jsp/modulos/persona/personaNew.jsp" type="page" />
+	</definition>
+	
+	<definition name="addHistoriaLaboralView" extends="adminTemplate">
+		<put name="content"
+			value="/WEB-INF/jsp/modulos/persona/addHistoriaLaboral.jsp" type="page" />
+	</definition>
+	
+	<definition name="addTareajeView" extends="adminTemplate">
+		<put name="content"
+			value="/WEB-INF/jsp/modulos/persona/addTareaje.jsp" type="page" />
+	</definition>
+	
+	<!-- FIN PERSONA -->
+
+	<!-- Calendario-->
+	
+	<definition name="calendarioView"   page="/WEB-INF/jsp/commons/calendar.jsp"/>
+	
+	
+	<!-- Inicio PORtal -->
+	
+		
+	<definition name="fileUpload" extends="adminTemplate">
+		<put name="content"
+			value="/WEB-INF/jsp/modulos/cargaArchivo/fileUpload.jsp" type="page" />
+	</definition>	
+
+	
+	<definition name="viewPopupCliente" extends="popupTemplate">
+		<put name="content"
+			value="/WEB-INF/jsp/modulos/moduloUsuario/clienteList.jsp" type="page" />
+	</definition>
+	
+	<!-- Inicio admin sisactavatar -->
+	
+	<!-- Vistas de Cliente - Inicio -->
+	<definition name="listarView" extends="adminTemplate">
+		<put name="content"
+			value="/WEB-INF/jsp/modulos/cliente/listClient.jsp" type="page" />
+	</definition>
+	
+	<definition name="registrarView" extends="adminTemplate">
+		<put name="content"
+			value="/WEB-INF/jsp/modulos/cliente/registerClient.jsp" type="page" />
+	</definition>
+	
+	<definition name="actualizarView" extends="adminTemplate">
+		<put name="content"
+			value="/WEB-INF/jsp/modulos/cliente/updateClient.jsp" type="page" />
+	</definition>
+	<!-- Vistas de Cliente - Fin -->
+	
+	<!-- Vistas de Lineas - Inicio -->
+	<definition name="listView" extends="adminTemplate">
+		<put name="content"
+			value="/WEB-INF/jsp/modulos/line/listLine.jsp" type="page" />
+	</definition>
+	
+	<definition name="registerView" extends="adminTemplate">
+		<put name="content"
+			value="/WEB-INF/jsp/modulos/line/registerLine.jsp" type="page" />
+	</definition>
+	
+	<definition name="updateView" extends="adminTemplate">
+		<put name="content"
+			value="/WEB-INF/jsp/modulos/line/updateLine.jsp" type="page" />
+	</definition>
+	<!-- Vistas de Lineas - Fin -->
+	
+	<!-- Vistas de Sms - Inicio -->
+	<definition name="listSmsView" extends="adminTemplate">
+		<put name="content"
+			value="/WEB-INF/jsp/modulos/sms/listSms.jsp" type="page" />
+	</definition>
+	<!-- Vistas de Sms - Fin -->
+	
+	
+	<!-- Vistas de ClaroServicePriceLoad - Inicio -->
+	<definition name="claroServicePriceLoadView" extends="adminTemplate">
+		<put name="content"
+			value="/WEB-INF/jsp/modulos/carga/CargaClaroServicePriceLoad.jsp" type="page" />
+	</definition>
+	
+	   <!-- Vista CheckProcessStatus -Inicio -->
+	<definition name="checkProcessStatusSuccessfullView" extends="adminTemplate">
+		<put name="content"
+			value="/WEB-INF/jsp/modulos/carga/CheckProcessStatusSuccessfull.jsp" type="page" />
+	</definition>
+	   <!-- Vista CheckProcessStatus -Fin -->
+	   <!-- Vista ExecutePriceProcess -Inicio -->
+	<definition name="executePriceProcessSuccessfullView" extends="adminTemplate">
+		<put name="content"
+			value="/WEB-INF/jsp/modulos/carga/ExecutePriceProcessSuccessfull.jsp" type="page" />
+	</definition>
+	   <!-- Vista ExecutePriceProcess -Fin -->	   
+	   
+	   <!-- Vista checkProcessStatusError -Inicio -->
+	<definition name="checkProcessStatusErrorView" extends="adminTemplate">
+		<put name="content"
+			value="/WEB-INF/jsp/modulos/carga/CheckProcessStatusError.jsp" type="page" />
+	</definition>
+	   <!-- Vista checkProcessStatusError -Fin -->
+	   
+	   	   <!-- Vista executePriceProcessError -Inicio -->
+	<definition name="executePriceProcessErrorView" extends="adminTemplate">
+		<put name="content"
+			value="/WEB-INF/jsp/modulos/carga/ExecutePriceProcessError.jsp" type="page" />
+	</definition>
+	   <!-- Vista executePriceProcessError -Fin -->	   
+	   
+	<!-- Vistas de ClaroServicePriceLoad - Fin -->
+	
+	<!-- Inicio de Vistas: claroServiceSyncOrderView -->
+	
+	<!-- Fin de Vistas: claroServiceSyncOrderView -->
+	<definition name="claroServiceSyncOrderView" extends="adminTemplate">
+		<put name="content"
+			value="/WEB-INF/jsp/modulos/carga/CargaClaroServiceStockLoad.jsp" type="page" />
+    </definition>
+	
+	<!-- Inicio de Vista: claroServiceStockLoadView -->
+	<definition name="claroServiceStockLoadView" extends="adminTemplate">
+		<put name="content"
+			value="/WEB-INF/jsp/modulos/carga/CargaClaroServiceStockLoad.jsp" type="page" />
+    </definition>
+	<!-- Fin de vista: claroServiceStockLoadView -->
+	
+	<!-- Inicio de Vista: claroServiceAccessoryLoadView -->
+	<definition name="claroServiceAccessoryLoadView" extends="adminTemplate">
+		<put name="content"
+			value="/WEB-INF/jsp/modulos/carga/CargaClaroServiceAccessoryLoad.jsp" type="page" />
+    </definition>
+	<!-- Fin de vista: claroServiceAccessoryLoadView -->
+
+	 <!-- Inicio de Vista: checkProcessStockStatusSuccessfullView -->
+	<definition name="checkProcessStockStatusSuccessfullView" extends="adminTemplate">
+		<put name="content"
+			value="/WEB-INF/jsp/modulos/carga/CheckProcessStockStatusSuccessfull.jsp" type="page" />
+    </definition>
+	 <!-- Fin de vista: checkProcessStockStatusSuccessfullView -->
+	 
+	 <!-- Inicio de Vista: checkProcessAccessoryStatusSuccessfullView -->
+	<definition name="checkProcessAccessoryStatusSuccessfullView" extends="adminTemplate">
+		<put name="content"
+			value="/WEB-INF/jsp/modulos/carga/CheckProcessAccessoryStatusSuccessfull.jsp" type="page" />
+    </definition>
+	 <!-- Fin de vista: checkProcessAccessoryStatusSuccessfullView -->
+
+	<!-- Inicio de Vista: executeStockProcessSuccessfullView -->
+	<definition name="executeStockProcessSuccessfullView" extends="adminTemplate">
+		<put name="content"
+			value="/WEB-INF/jsp/modulos/carga/ExecuteStockProcessSuccessfull.jsp" type="page" />
+    </definition>
+	<!-- Fin de vista: executeStockProcessSuccessfullView -->
+	
+	<!-- Inicio de Vista: executeAccessoryProcessSuccessfullView -->
+	<definition name="executeAccessoryProcessSuccessfullView" extends="adminTemplate">
+		<put name="content"
+			value="/WEB-INF/jsp/modulos/carga/ExecuteAccessoryProcessSuccessfull.jsp" type="page" />
+    </definition>
+	<!-- Fin de vista: executeAccessoryProcessSuccessfullView -->
+
+	<!-- Inicio de Vista: checkProcessStockStatusErrorView -->
+	<definition name="checkProcessStockStatusErrorView" extends="adminTemplate">
+		<put name="content"
+			value="/WEB-INF/jsp/modulos/carga/CheckProcessStockStatusError.jsp" type="page" />
+    </definition>
+	<!-- Fin de vista: checkProcessStockStatusErrorView -->
+	
+	<!-- Inicio de Vista: checkProcessAccessoryStatusErrorView -->
+	<definition name="checkProcessAccessoryStatusErrorView" extends="adminTemplate">
+		<put name="content"
+			value="/WEB-INF/jsp/modulos/carga/CheckProcessAccessoryStatusError.jsp" type="page" />
+    </definition>
+	<!-- Fin de vista: checkProcessAccessoryStatusErrorView -->
+	 
+	<!-- Inicio de Vista: executeStockProcessErrorView -->
+	<definition name="executeStockProcessErrorView" extends="adminTemplate">
+		<put name="content"
+			value="/WEB-INF/jsp/modulos/carga/ExecuteStockProcessError.jsp" type="page" />
+    </definition>
+	<!-- Fin de vista: executeStockProcessErrorView -->
+	
+	<!-- Inicio de Vista: executeAccessoryProcessErrorView -->
+	<definition name="executeAccessoryProcessErrorView" extends="adminTemplate">
+		<put name="content"
+			value="/WEB-INF/jsp/modulos/carga/ExecuteAccessoryProcessError.jsp" type="page" />
+    </definition>
+	<!-- Fin de vista: executeAccessoryProcessErrorView -->
+
+	<!-- Inicio de vistas para Parametro -->
+	<definition name="listarParametroView" extends="adminTemplate">
+		<put name="content"
+			value="/WEB-INF/jsp/modulos/parametro/listaParametro.jsp" type="page" />
+	</definition>	
+	<definition name="actualizarParametroView" extends="adminTemplate">
+		<put name="content"
+			value="/WEB-INF/jsp/modulos/parametro/parametroActualizar.jsp" type="page" />
+	</definition>	
+	<definition name="registrarParametroView" extends="adminTemplate">
+		<put name="content"
+			value="/WEB-INF/jsp/modulos/parametro/parametroRegistrar.jsp" type="page" />
+	</definition>	
+	<!-- Fin de vistas para Parametro -->
+
+	<!-- Inicio de vistas para Evaluacion -->
+	<definition name="listarEvaluacionView" extends="adminTemplate">
+		<put name="content"
+			value="/WEB-INF/jsp/modulos/evaluacion/listEvaluacion.jsp" type="page" />
+	</definition>	
+	<definition name="actualizarEvaluacionView" extends="adminTemplate">
+		<put name="content"
+			value="/WEB-INF/jsp/modulos/evaluacion/updateEvaluacion.jsp" type="page" />
+	</definition>		
+	<!-- Fin de vistas para Evaluacion -->
+	
+	
+	<!-- Inicio de vistas para Orden -->
+	
+	<definition name="listarOrdenesView" extends="adminTemplate">
+		<put name="content"
+			value="/WEB-INF/jsp/modulos/ordenes/listOrdenes.jsp" type="page" />
+	</definition>
+	
+	<definition name="actualizarOrdenesView" extends="adminTemplate">
+		<put name="content"
+			value="/WEB-INF/jsp/modulos/ordenes/updateOrden.jsp" type="page" />
+	</definition>
+	
+	<definition name="historialOrdenesView" extends="adminTemplate">
+		<put name="content"
+			value="/WEB-INF/jsp/modulos/ordenes/historialOrden.jsp" type="page" />
+	</definition>
+	
+	<!-- lsoto: 30-01-20 : Implementación del historial de SyncOrder por orden - INICIO -->
+	<definition name="listarDetalleOrdenView" extends="adminTemplate">
+		<put name="content"
+			value="/WEB-INF/jsp/modulos/ordenes/detallelOrden.jsp" type="page" />
+	</definition>
+	<!-- lsoto: 30-01-20 : Implementación del historial de SyncOrder por orden - FIN -->
+	
+	<!-- Fin de vistas para Orden -->
+	
+	<!-- Inicio de vistas para Solicitudes -->
+	<definition name="listarSolicitudesView" extends="adminTemplate">
+		<put name="content"
+			value="/WEB-INF/jsp/modulos/solicitudes/listSolicitudes.jsp" type="page" />
+	</definition>
+	
+	<!-- Fin de vistas para Solicitudes -->
+	
+	<!-- Inicio de vistas de Usuario -->
+	<definition name="usuarioSearchView" extends="adminTemplate">
+		<put name="content"	value="/WEB-INF/jsp/modulos/usuario/listUsuario.jsp" type="page" />
+	</definition>
+	<definition name="usuarioRegistrarView" extends="adminTemplate">
+		<put name="content"	value="/WEB-INF/jsp/modulos/usuario/registrarUsuario.jsp" type="page" />
+	</definition>
+	<definition name="usuarioAddRolView" extends="adminTemplate">
+		<put name="content"	value="/WEB-INF/jsp/modulos/usuario/addRoles.jsp" type="page" />
+	</definition>
+	
+
+	<!-- Inicio de vistas de Perfil -->
+	<definition name="perfilSearchView" extends="adminTemplate">
+		<put name="content"	value="/WEB-INF/jsp/modulos/perfil/listPerfil.jsp" type="page" />
+	</definition>
+	<definition name="perfilRegistrarView" extends="adminTemplate">
+		<put name="content"	value="/WEB-INF/jsp/modulos/perfil/registrarPerfil.jsp" type="page" />
+	</definition>
+	
+	<definition name="perfilAddOpcionView" extends="adminTemplate">
+		<put name="content"	value="/WEB-INF/jsp/modulos/perfil/addOpcion.jsp" type="page" />
+	</definition>	
+	
+	<!-- lsoto: 23-11-19 : Implementación del mantenimiento de planes y asociación con los topes de consumo - INICIO -->
+	<definition name="perfilAddTopeConsumoView" extends="adminTemplate">
+		<put name="content"	value="/WEB-INF/jsp/modulos/tiposplan/addTopeConsumo.jsp" type="page" />
+	</definition>	
+	<!-- lsoto: 23-11-19 : Implementación del mantenimiento de planes y asociación con los topes de consumo - FIN -->
+	
+	<!-- Inicio de vistas de Opcion -->
+	<definition name="opcionSearchView" extends="adminTemplate">
+		<put name="content"	value="/WEB-INF/jsp/modulos/opcion/listOpcion.jsp" type="page" />
+	</definition>
+	<definition name="opcionRegistrarView" extends="adminTemplate">
+		<put name="content"	value="/WEB-INF/jsp/modulos/opcion/registrarOpcion.jsp" type="page" />
+	</definition>		
+	<!-- Fin de vistas de Usuario -->
+	
+	<!-- Fin admin sisactavatar -->
+	
+	<!-- lsoto: 31-10-19 : Implementación del servicio de tope de consumo - INICIO -->
+	<!-- Inicio de vistas para topes de consumo -->
+	<definition name="listarViewTopeConsumo" extends="adminTemplate">
+		<put name="content"
+			value="/WEB-INF/jsp/modulos/topeconsumo/listTopeConsumo.jsp" type="page" />
+	</definition>
+	
+	<definition name="registrarViewTopeConsumo" extends="adminTemplate">
+		<put name="content"
+			value="/WEB-INF/jsp/modulos/topeconsumo/registerTopeConsumo.jsp" type="page" />
+	</definition>
+	<!-- Fin de vistas para topes de consumo -->
+	<!-- lsoto: 31-10-19 : Implementación del servicio de tope de consumo - FIN -->
+	
+	<!-- lsoto: 23-11-19 : Implementación del mantenimiento de planes y asociación con los topes de consumo - INICIO -->
+	<!-- Inicio de vistas para tipos de plan -->
+	<definition name="listarViewTipoPlan" extends="adminTemplate">
+		<put name="content"
+			value="/WEB-INF/jsp/modulos/tiposplan/listTipoPlanes.jsp" type="page" />
+	</definition>
+	
+	<definition name="registrarViewTipoPlan" extends="adminTemplate">
+		<put name="content"
+			value="/WEB-INF/jsp/modulos/tiposplan/registerTipoPlanes.jsp" type="page" />
+	</definition>
+	<!-- Fin de vistas para tipos de plan -->
+	<!-- lsoto: 23-11-19 : Implementación del mantenimiento de planes y asociación con los topes de consumo - FIN -->	
+
+</tiles-definitions>

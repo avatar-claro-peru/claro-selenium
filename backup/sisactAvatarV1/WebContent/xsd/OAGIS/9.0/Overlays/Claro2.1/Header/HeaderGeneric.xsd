@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema targetNamespace="http://claro.com.pe/HeaderGeneric" elementFormDefault="qualified" xmlns="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://claro.com.pe/HeaderGeneric">
+
+    <complexType name="HeaderRequestType">
+    	<sequence>
+    		<element name="canal" type="string" maxOccurs="1" minOccurs="0"></element>
+    		<element name="idAplicacion" type="string" maxOccurs="1" minOccurs="0"></element>
+    		<element name="usuarioAplicacion" type="string" maxOccurs="1" minOccurs="0"></element>
+    		<element name="usuarioSesion" type="string" maxOccurs="1" minOccurs="1"></element>
+    		<element name="idTransaccionESB" type="string" maxOccurs="1" minOccurs="1"></element>
+    		<element name="idTransaccionNegocio" type="string" maxOccurs="1" minOccurs="1"></element>
+    		<element name="fechaInicio" type="dateTime" maxOccurs="1" minOccurs="1"></element>
+    		<element name="nodoAdicional" type="anyType" maxOccurs="1" minOccurs="1"></element>
+    	</sequence>
+    </complexType>
+
+
+    <complexType name="HeaderResponseType">
+    	<sequence>
+    		<element name="idTransaccionESB" type="string" maxOccurs="1" minOccurs="1"></element>
+    		<element name="idTransaccionNegocio" type="string" maxOccurs="1" minOccurs="1"></element>
+    		<element name="fechaInicio" type="dateTime" maxOccurs="1" minOccurs="1"></element>
+    		<element name="fechaFin" type="dateTime" maxOccurs="1" minOccurs="1"></element>
+    		<element name="nodoAdicional" type="string" maxOccurs="1" minOccurs="1"></element>
+    	</sequence>
+    </complexType>
+
+
+    <element name="HeaderRequest" type="tns:HeaderRequestType"></element>
+
+    <element name="HeaderResponse" type="tns:HeaderResponseType"></element>
+</schema>

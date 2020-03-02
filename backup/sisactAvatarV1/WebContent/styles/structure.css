@@ -1,0 +1,31 @@
+body {min-width:640px; font-family: Verdana, Arial, Helvetica, sans-serif; margin: 0px; padding: 0px; text-align: justify;}
+#header,#menu,#content,#footer {overflow:hidden;display:inline-block}
+#header,#footer {width:100%;height: 20%;}
+#menu,#content{float:left;}
+#content {width:83%;height: 80%; align: center;  text-align:left; }
+#content table {margin:0 auto;}
+#content span.pagebanner {margin:0 auto;}
+#content span.pagelinks {margin:0 auto;}
+
+
+#contentPopUp {width:100%;height: 80%; align: center;  text-align:left; display:inline-block;}
+#contentPopUp table {margin:0 auto;}
+#contentPopUp span.pagebanner {margin:0 auto;}
+#contentPopUp span.pagelinks {margin:0 auto;}
+
+	
+#menu {width:16%;height: 600px;display:inline;background: url(../imagenes/admin/marcos2.jpg) ; text-align: justify; }
+#header {width: 100%; height: 10%; clear:both; background: url(../imagenes/admin/marcos1.jpg) ; text-align:center; font-weight: bold; color: #ffffff; }
+#footer {clear:both;text-align: right; background: url(../imagenes/admin/marcos1.jpg); color: #ffffff; font-weight: bold;}
+
+#fecha { width: 100%; height: 2%; float: left; text-align: right; font-weight: bold; background: #ffffff url(../imagenes/admin/marcos3.jpg) repeat-x; padding-top: 5px; padding-bottom: 5px; font-size: 12px;}
+
+
+#mediocol1 { clear: both; width: 174px; height: 22px; float: left; background: #ffffff url(../imagenes/admin/marcos2.jpg); }
+#mediocol2 { width: 624px; height: 22px; float: left; background: #ffffff url(../imagenes/admin/fruitdrt_09.jpg) repeat-x;  padding-top: 5px; }
+
+#menulateral h1 { width: 140px; height: 23px; font-size: 12px; font-family: Arial; color: #ffffff; background: background: url(../imagenes/admin/marcos2.jpg); text-transform: uppercase; padding: 5px 3px 0px 7px; border-top: 1px solid #ffffff; border-bottom: 1px solid #ffffff; border-left: 1px solid #ffffff; margin: 10px 5px 5px 5px;  }
+/*#menulateral li { list-style: url(../imagenes/admin/flecha.gif); font-size: 9px; padding: 2px; }*/
+#menulateral a { color: #ffffff; font-size: 12px; }
+#menulateral a:hover { color: #FFCC00; }
+#menulateral ul { margin: 15px 0px 5px 30px; }

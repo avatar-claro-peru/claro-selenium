@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:util="http://www.springframework.org/schema/util"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation="
+http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.0.xsd
+http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-2.0.xsd
+http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.0.xsd
+http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-2.0.xsd">
+
+	<!-- Services ************************************************************************************* -->
+	
+	<bean id="opcionServiceBean"  parent="baseTransactionProxy" >
+		<property name="target" >
+		<bean class="pe.com.claro.website.seguridad.service.impl.OpcionServiceImpl" >
+			<property name="dao" ref="daoOpcionBean"></property>
+		</bean >
+		</property>
+	</bean>
+	
+	
+	<bean id="perfilServiceBean"  parent="baseTransactionProxy" >
+		<property name="target" >
+		<bean class="pe.com.claro.website.seguridad.service.impl.PerfilServiceImpl" >
+			<property name="dao" ref="daoPerfilBean"></property>
+		</bean >
+		</property>
+	</bean>
+
+
+	<bean id="usuarioServiceBean"  parent="baseTransactionProxy" >
+		<property name="target" >
+		<bean class="pe.com.claro.website.seguridad.service.impl.UsuarioServiceImpl" >
+			<property name="dao" ref="daoUsuarioBean"></property>
+		</bean >
+		</property>
+	</bean>
+
+	<bean id="usuarioPerfilServiceBean"  parent="baseTransactionProxy" >
+		<property name="target" >
+		<bean class="pe.com.claro.website.seguridad.service.impl.UsuarioPerfilServiceImpl" >
+			<property name="dao" ref="daoUsuarioPerfilBean"></property>
+		</bean >
+		</property>
+	</bean>	
+	
+	<bean id="perfilOpcionServiceBean"  parent="baseTransactionProxy" >
+		<property name="target" >
+		<bean class="pe.com.claro.website.seguridad.service.impl.PerfilOpcionServiceImpl" >
+			<property name="dao" ref="daoPerfilOpcionBean"></property>
+		</bean >
+		</property>
+	</bean>
+	
+	<!-- lsoto: 23-11-19 : Implementación del mantenimiento de planes y asociación con los topes de consumo - INICIO -->
+	<bean id="topeConsumoxTipoPlanServiceBean"  parent="baseTransactionProxy" >
+		<property name="target" >
+		<bean class="pe.com.claro.website.seguridad.service.impl.TopeConsumoTipoPlanOpcionServiceImpl" >
+			<property name="dao" ref="TopeConsumoxTipoPlanBean"></property>
+		</bean > 
+		</property>
+	</bean>				
+	<!-- lsoto: 23-11-19 : Implementación del mantenimiento de planes y asociación con los topes de consumo - FIN -->
+
+	<!-- DAOs ******************************************************************************************** -->
+	
+	<bean id="daoOpcionBean" 
+		class="pe.com.claro.website.seguridad.dao.ibatis.OpcionDAOiBatis" 
+		parent="baseIbatisDAO">
+	</bean>
+	
+	<bean id="daoPerfilBean" 
+		class="pe.com.claro.website.seguridad.dao.ibatis.PerfilDAOiBatis" 
+		parent="baseIbatisDAO">
+	</bean>
+
+	<bean id="daoUsuarioBean" 
+		class="pe.com.claro.website.seguridad.dao.ibatis.UsuarioDAOiBatis" 
+		parent="baseIbatisDAO">
+	</bean>
+	
+	<bean id="daoUsuarioPerfilBean" 
+		class="pe.com.claro.website.seguridad.dao.ibatis.UsuarioPerfilDAOiBatis" 
+		parent="baseIbatisDAO">
+	</bean>
+	
+	<bean id="daoPerfilOpcionBean" 
+		class="pe.com.claro.website.seguridad.dao.ibatis.PerfilOpcionDAOiBatis" 
+		parent="baseIbatisDAO">
+	</bean>
+	
+	<!-- lsoto: 23-11-19 : Implementación del mantenimiento de planes y asociación con los topes de consumo - INICIO -->	
+	<bean id="TopeConsumoxTipoPlanBean" 
+		class="pe.com.claro.website.app.dao.ibatis.TipoPlanxTopeConsumoDAOiBatis" 
+		parent="baseIbatisDAO">
+	</bean>
+	<!-- lsoto: 23-11-19 : Implementación del mantenimiento de planes y asociación con los topes de consumo - FIN -->	
+
+</beans>

@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?><schema elementFormDefault="qualified" targetNamespace="http://www.claroservicestockload.com/ClaroServiceStockLoad" xmlns="http://www.w3.org/2001/XMLSchema" xmlns:myco="http://www.claroservicestockload.com/ClaroServiceStockLoad">
+
+    <complexType name="GetCheckProcessStatusType">
+    	<sequence>
+    		<element name="user" type="string" maxOccurs="1" minOccurs="1"/>
+    		<element name="password" type="string" maxOccurs="1" minOccurs="1"/>
+    		<element name="listaRequestOpcional" type="myco:RequestOpcionalType" minOccurs="0" maxOccurs="unbounded"></element>
+    	</sequence>
+    </complexType>
+    
+    <complexType name="ShowCheckProcessStatusType">
+    	<sequence>
+    		<element name="IdEvent" type="string" />
+
+
+    		<element name="listaResponseOpcional"
+    			type="myco:ResponseOpcionalType" minOccurs="0" maxOccurs="unbounded">
+    		</element>
+    		<element name="responseStatus" type="myco:ResponseStatus"></element>
+    		<element name="claroFault" type="myco:ClaroFault"></element>
+    	</sequence>
+    </complexType>
+
+    <complexType name="GetExecuteStockProcessType">
+    	<sequence>
+    		<element name="userId" type="string" maxOccurs="1" minOccurs="1"/>
+    		<element name="password" type="string" maxOccurs="1" minOccurs="1"/>
+    		<element name="listaRequestOpcional" type="myco:RequestOpcionalType" minOccurs="0" maxOccurs="unbounded"></element>
+    	</sequence>
+    </complexType>
+    
+    <complexType name="ShowExecuteStockProcessType">
+    	<sequence>
+    		<element name="IdEvent" type="string" maxOccurs="1" minOccurs="1"/>
+
+
+    		<element name="listaResponseOpcional"
+    			type="myco:ResponseOpcionalType" minOccurs="0" maxOccurs="unbounded">
+    		</element>
+    		<element name="responseStatus" type="myco:ResponseStatus" maxOccurs="1" minOccurs="1"></element>
+    		<element name="claroFault" type="myco:ClaroFault" maxOccurs="1" minOccurs="1"></element>
+    	</sequence>
+    </complexType>
+    
+    <element name="GetExecuteStockProcessElement" type="myco:GetExecuteStockProcessType"/>
+
+    <element name="ShowExecuteStockProcessElement" type="myco:ShowExecuteStockProcessType"/>
+
+    <element name="GetCheckProcessStatusElement" type="myco:GetCheckProcessStatusType"/>
+
+    <element name="ShowCheckProcessStatusElement" type="myco:ShowCheckProcessStatusType"/>
+
+    <complexType name="RequestOpcionalType">
+    	<sequence>
+    		<element name="campo" type="string" maxOccurs="1" minOccurs="1"></element>
+    		<element name="valor" type="string" maxOccurs="1" minOccurs="0"></element>
+    	</sequence>
+    </complexType>
+
+
+    <complexType name="ResponseStatus">
+    	<sequence>
+    		<element name="estado" type="int" maxOccurs="1" minOccurs="0"></element>
+    		<element name="codigoRespuesta" type="string" maxOccurs="1" minOccurs="1"></element>
+    		<element name="descripcionRespuesta" type="string" maxOccurs="1" minOccurs="1"></element>
+    		<element name="ubicacionError" type="string" maxOccurs="1" minOccurs="0"></element>
+    		<element name="fecha" type="dateTime" maxOccurs="1" minOccurs="0"></element>
+    		<element name="origen" type="string" maxOccurs="1" minOccurs="0"></element>
+    	</sequence>
+    </complexType>
+    
+    <complexType name="ClaroFault">
+    	<sequence>
+    		<element name="idAuditoria" type="string" maxOccurs="1" minOccurs="1"></element>
+    		<element name="codigoError" type="string" maxOccurs="1" minOccurs="1"></element>
+    		<element name="descripcionError" type="string" maxOccurs="1" minOccurs="1"></element>
+    		<element name="ubicacionError" type="string" maxOccurs="1" minOccurs="0"></element>
+    		<element name="fecha" type="dateTime" maxOccurs="1" minOccurs="0"></element>
+    		<element name="errorOrigen" type="anyType" maxOccurs="1" minOccurs="0"></element>
+    	</sequence>
+    </complexType>
+    
+    <complexType name="ResponseOpcionalType">
+    	<sequence>
+    		<element name="campo" type="string" maxOccurs="1" minOccurs="1"></element>
+    		<element name="valor" type="string" maxOccurs="1" minOccurs="0"></element>
+    	</sequence>
+    </complexType>
+</schema>

@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:util="http://www.springframework.org/schema/util"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation="
+http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.0.xsd
+http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-2.0.xsd
+http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.0.xsd
+http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-2.0.xsd">
+
+<!--  Controllers Seguridad -->
+
+	<bean name="loginController" class="org.springframework.web.servlet.mvc.ParameterizableViewController">
+		<property name="viewName" value="loginView"/>
+	</bean>
+	
+	<bean name="inicioController" class="org.springframework.web.servlet.mvc.ParameterizableViewController">
+		<property name="viewName" value="inicioView"/>
+	
+	</bean>
+	<bean id="usuarioController" class="pe.com.claro.website.seguridad.web.servlet.mvc.UsuarioController">
+  		<property name="methodNameResolver" ref="methodNameResolver"/>
+		<property name="service" ref="usuarioServiceBean"/>
+		<property name="servicePerfil" ref="perfilServiceBean"/>
+		<property name="serviceUsuarioPerfil" ref="usuarioPerfilServiceBean"/>
+		<property name="listarView" value="usuarioSearchView"/>
+		<property name="registrarView" value="usuarioRegistrarView"/>
+		<property name="actualizarView" value="usuarioRegistrarView"/>	
+		<property name="addRolView" value="usuarioAddRolView"/>				
+		<!--property name="successfulView" value="usuarioSuccessView"/-->		
+		<property name="commandName" value="usuario"/>
+	</bean>
+
+	<bean id="perfilController" class="pe.com.claro.website.seguridad.web.servlet.mvc.PerfilController">
+  		<property name="methodNameResolver" ref="methodNameResolver"/>
+		<property name="service" ref="perfilServiceBean"/>
+		<property name="serviceOpcion" ref="opcionServiceBean"/>
+		<property name="servicePerfilOpcion" ref="perfilOpcionServiceBean"/>
+		<property name="listarView" value="perfilSearchView"/> 
+		<property name="registrarView" value="perfilRegistrarView"/>
+		<property name="actualizarView" value="perfilRegistrarView"/>	
+		<property name="addOpcionView" value="perfilAddOpcionView"/>
+		<!--property name="successfulView" value="usuarioSuccessView"/-->		
+		<property name="commandName" value="perfil"/>
+	</bean>
+	
+	<bean id="opcionController" class="pe.com.claro.website.seguridad.web.servlet.mvc.OpcionController">
+  		<property name="methodNameResolver" ref="methodNameResolver"/>
+		<property name="service" ref="opcionServiceBean"/>
+		<property name="listarView" value="opcionSearchView"/>
+		<property name="registrarView" value="opcionRegistrarView"/>
+		<property name="actualizarView" value="opcionRegistrarView"/>	
+		<!--property name="successfulView" value="usuarioSuccessView"/-->		
+		<property name="commandName" value="opcion"/>
+	</bean>		
+
+</beans>

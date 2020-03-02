@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" 
+	targetNamespace="http://claro.com.pe/esb/data/bss/generico/responseData/v1/"
+	xmlns:tns="http://claro.com.pe/esb/data/bss/generico/responseData/v1/" 
+	elementFormDefault="qualified">
+	
+	<xsd:element name="ResponseData" type="tns:ResponseData">
+		<xsd:annotation>
+			<xsd:documentation>Esta estructura tiene por objetivo informar los
+				datos de respuesta propios del servicio</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	
+    <xsd:complexType name="ResponseData">
+        <xsd:sequence>
+            <xsd:element name="idEvent" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+        </xsd:sequence>
+    </xsd:complexType>
+	
+</xsd:schema>

@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app id="WebApp_ID" version="2.4"
+	xmlns="http://java.sun.com/xml/ns/j2ee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd">
+	<display-name>sisactAvatarV1</display-name>
+	<!--///////////////////////////////////////////////////////////////////////// -->
+	<!-- PARAM CONTEXT -->
+	<!--///////////////////////////////////////////////////////////////////////// -->
+	<!-- -->
+	<context-param>
+		<param-name>log4jConfigLocation</param-name>
+		<param-value>/WEB-INF/log4j.properties</param-value>
+	</context-param>
+	<context-param>
+		<param-name>webAppRootKey</param-name>
+		<param-value>spring</param-value>
+	</context-param>
+
+	<!-- Context Configuration locations for Spring XML files -->
+	<context-param>
+		<param-name>contextConfigLocation</param-name>
+		<param-value>
+            /WEB-INF/webcontext/app*.xml
+        </param-value>
+	</context-param>
+
+	<!--///////////////////////////////////////////////////////////////////////// -->
+	<!-- FILTERS -->
+	<!--///////////////////////////////////////////////////////////////////////// -->
+
+	<filter>
+		<filter-name>securityFilter</filter-name>
+		<filter-class>org.acegisecurity.util.FilterToBeanProxy</filter-class>
+		<init-param>
+			<param-name>targetClass</param-name>
+			<param-value>org.acegisecurity.util.FilterChainProxy</param-value>
+		</init-param>
+	</filter>
+
+
+	<!--///////////////////////////////////////////////////////////////////////// -->
+	<!-- FILTER MAPPINGS -->
+	<!--///////////////////////////////////////////////////////////////////////// -->
+
+
+	<filter-mapping>
+		<filter-name>securityFilter</filter-name>
+		<url-pattern>*.jsp</url-pattern>
+	</filter-mapping>
+	<filter-mapping>
+		<filter-name>securityFilter</filter-name>
+		<url-pattern>*.htm</url-pattern>
+	</filter-mapping>
+	<filter-mapping>
+		<filter-name>securityFilter</filter-name>
+		<url-pattern>/j_acegi_security_check</url-pattern>
+	</filter-mapping>
+
+
+	<!--///////////////////////////////////////////////////////////////////////// -->
+	<!-- LISTENERS -->
+	<!--///////////////////////////////////////////////////////////////////////// -->
+	<listener>
+		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+	</listener>
+	<!-- -->
+	<listener>
+		<listener-class>org.springframework.web.util.Log4jConfigListener</listener-class>
+	</listener>
+
+	<listener>
+		<listener-class>org.springframework.web.util.IntrospectorCleanupListener</listener-class>
+	</listener>
+
+	<!--///////////////////////////////////////////////////////////////////////// -->
+	<!-- SERVLETS -->
+	<!--///////////////////////////////////////////////////////////////////////// -->
+	<servlet>
+		<servlet-name>sisacAvatarSite</servlet-name>
+		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+		<init-param>
+			<param-name>contextConfigLocation</param-name>
+			<param-value>
+				/WEB-INF/webcontext/servlet*.xml
+			</param-value>
+		</init-param>
+		<load-on-startup>2</load-on-startup>
+	</servlet>
+
+	<!--seccion publica -->
+	<servlet>
+		<servlet-name>LoadServlet</servlet-name>
+		<servlet-class>pe.com.claro.website.admin.web.servlet.LoadServlet</servlet-class>
+	</servlet>
+	<servlet>
+		<display-name>Apache-Axis Servlet</display-name>
+		<servlet-name>AxisServlet</servlet-name>
+		<servlet-class>org.apache.axis2.transport.http.AxisServlet</servlet-class>
+	</servlet>
+	<!--///////////////////////////////////////////////////////////////////////// -->
+	<!-- SERVLETS MAPPING -->
+	<!--///////////////////////////////////////////////////////////////////////// -->
+	<servlet-mapping>
+		<servlet-name>sisacAvatarSite</servlet-name>
+		<url-pattern>*.htm</url-pattern>
+	</servlet-mapping>
+
+	<servlet-mapping>
+		<servlet-name>LoadServlet</servlet-name>
+		<url-pattern>/portal</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>AxisServlet</servlet-name>
+		<url-pattern>/servlet/AxisServlet</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>AxisServlet</servlet-name>
+		<url-pattern>*.jws</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>AxisServlet</servlet-name>
+		<url-pattern>/services/*</url-pattern>
+	</servlet-mapping>
+
+	<!--///////////////////////////////////////////////////////////////////////// -->
+	<!-- WELCOME FILE LIST -->
+	<!--///////////////////////////////////////////////////////////////////////// -->
+
+	<!--Pagina de Inicio -->
+	<welcome-file-list>
+		<welcome-file>portal</welcome-file>
+		<welcome-file>/axis2-web/index.jsp</welcome-file>
+	</welcome-file-list>
+	<error-page>
+		<error-code>404</error-code>
+		<location>/axis2-web/Error/error404.jsp</location>
+	</error-page>
+	<error-page>
+		<error-code>500</error-code>
+		<location>/axis2-web/Error/error500.jsp</location>
+	</error-page>
+	<!--Paginas de eror -->
+
+	<!--///////////////////////////////////////////////////////////////////////// -->
+	<!-- PAGINAS DE ERROR -->
+	<!--///////////////////////////////////////////////////////////////////////// -->
+	<!-- error-page> <error-code>404</error-code> <location>/error.jsp</location> 
+		</error-page> <error-page> <error-code>500</error-code> <location>/error.jsp</location> 
+		</error-page> <error-page> <exception-type>java.sql.SQLException</exception-type> 
+		<location>/error.jsp</location> </error-page> <error-page> <exception-type>PageNotFoundException</exception-type> 
+		<location>/error.jsp</location> </error-page -->
+
+</web-app>

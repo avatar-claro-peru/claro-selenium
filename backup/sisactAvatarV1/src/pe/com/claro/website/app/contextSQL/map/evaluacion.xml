@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" "http://www.ibatis.com/dtd/sql-map-2.dtd">
+<sqlMap namespace="Evaluacion">
+	
+   <!-- se utiliza un alias para definir la clase Domain. -->
+
+	<typeAlias alias="evaluacion" type="pe.com.claro.website.app.domain.Evaluacion" />
+		
+	<!--
+		Result maps describe the mapping between the columns returned from a
+		query, and the class properties. A result map isn't necessary if the
+		columns (or aliases) match to the properties exactly.
+	-->
+	<resultMap id="resultadoP" class="evaluacion">
+		<result property="id" column="id" />
+		<result property="ordenId" column="orden_id" />
+		<result property="secuencia" column="secuencia" />
+		<result property="estado" column="estado" />
+		<result property="tipoOperacion" column="tipo_operacion" />
+		<result property="tipo_venta" column="tipo_venta" />
+		<!-- lsoto: 18-07-19: Adición de las columnas en las que se trae el resultado de evaluación postpago: INICIO -->
+		<result property="codeResponse" column="coderesponse" />
+		<result property="flagCambioCampana" column="flagcambiocampana" />
+		<result property="codigoPreEval" column="codigopreeval" />
+		<result property="codCampana" column="codcampana" />
+		<result property="codigoLP" column="codigolp" />
+		<result property="cantidadDeAplicacionesRenta" column="cantidaddeaplicacionesrenta" />
+		<result property="cuotaInicial" column="cuotainicial" />
+		<result property="valorCuota" column="valorcuota" />
+		<result property="valorEquipo" column="valorequipo" />
+		<!-- lsoto: 18-07-19: Adición de las columnas en las que se trae el resultado de evaluación postpago: FIN -->
+		
+		<!-- lsoto: 08-08-19: Incluimos el código para mostrar los valores de cuota inicial, precio por cuota y precio total en el formulario de evluación del servicio dummy: INICIO -->
+		<result property="cuotainicial_tv" column="cuotainicial_tv" />
+		<result property="valorcuota_tv" column="valorcuota_tv" />
+		<result property="valorequipo_tv" column="valorequipo_tv" />
+		<result property="modalidadventa" column="modalidadventa" />
+		<!-- lsoto: 08-08-19: Incluimos el código para mostrar los valores de cuota inicial, precio por cuota y precio total en el formulario de evluación del servicio dummy: FIN -->
+	
+		<!-- lsoto: 09-08-19: Inclusión de la visualización del la lista de precios y campaña en el formulario de edición de evaluaciones: INICIO -->
+		<result property="listaprecios" column="listaprecios" />
+		<result property="campania" column="campania" />
+		<!-- lsoto: 09-08-19: Inclusión de la visualización del la lista de precios y campaña en el formulario de edición de evaluaciones: FIN -->
+		
+		<!-- lsoto: 23-09-19: Incluir el campo que soporte el número de chip en el servicio evaluar postpago: INICIO -->
+		<result property="codigoMaterialChip" column="codigomaterialchip" />
+		<result property="codigoMaterialItem" column="codigomaterialitem" />
+		<!-- property is the class property, and column is the name of the column in the database -->
+		<!-- lsoto: 23-09-19: Incluir el campo que soporte el número de chip en el servicio evaluar postpago: FIN -->
+		
+	</resultMap>
+ 
+	<!-- PARA LAS OTRAS FUNCIONES -->
+ 
+    <select id="listarTodo" parameterClass="evaluacion"  resultMap="resultadoP">
+ 		select * from evaluacion order by id desc
+ 	</select>
+ 	
+	
+	<!--  PARA LOS GENERICOS -->
+	<select id="list" resultMap="resultadoP" parameterClass="evaluacion">
+		select * from evaluacion
+		where orden_id like #ordenId#
+		order by id desc
+	</select>
+	
+	<update id="delete" parameterClass="evaluacion"> 
+		delete from evaluacion
+ 		where ID = #id#
+	</update>
+	
+	<select id="selectByID" parameterClass="java.lang.Integer" resultClass="Evaluacion"> 
+		select 
+		ID as id,
+		orden_id as ordenId,
+		secuencia as secuencia,
+		flag_error_interno as flagErrorInterno,
+		estado_cntLinea as estadoCantidadLineas,
+		estado_sec_pendiente as estadoSecPendiente,
+		estado_cons_previa as estadoConsultaPrevia,
+		tipo_operacion as tipoOperacion,
+		id_padre as idPadre,
+		estado_renovacion as estadoRenovacion,
+		descripcion_cons_previa as msgConsultaPrevia,
+		tipo_venta as tipo_venta,
+		<!-- lsoto: 18-07-19: Adición de las columnas en las que se trae el resultado de evaluación postpago: INICIO -->
+		coderesponse as codeResponse,
+		flagcambiocampana as flagCambioCampana,
+		codigopreeval as codigoPreEval,
+		codcampana as codCampana,
+		codigolp as codigoLP,
+		cantidaddeaplicacionesrenta as cantidadDeAplicacionesRenta,
+		cuotainicial as cuotaInicial,
+		valorcuota as valorCuota,
+		valorequipo as valorEquipo,
+		<!-- lsoto: 18-07-19: Adición de las columnas en las que se trae el resultado de evaluación postpago: FIN -->
+		
+		<!-- 		lsoto: 08-08-19: Incluimos el código para mostrar los valores de cuota inicial, precio por cuota y precio total en el formulario de evluación del servicio dummy: INICIO -->
+		cuotainicial_tv as cuotainicial_tv,
+		valorcuota_tv as valorcuota_tv,
+		valorequipo_tv as valorequipo_tv,
+		modalidadventa as modalidadventa,
+		<!-- 		lsoto: 09-08-19: Inclusión de la visualización del la lista de precios y campaña en el formulario de edición de evaluaciones: INICIO -->
+		listaprecios as listaprecios,
+		campania as campania,
+		<!-- 		lsoto: 09-08-19: Inclusión de la visualización del la lista de precios y campaña en el formulario de edición de evaluaciones: FIN -->
+		
+		<!-- lsoto: 23-09-19: Incluir el campo que soporte el número de chip en el servicio evaluar postpago: INICIO -->
+		codigomaterialchip as codigoMaterialChip,
+		codigomaterialitem as codigoMaterialItem
+		<!-- 'codigomaterialchip' es el nombre del campo en la base de datos -->
+		<!-- lsoto: 23-09-19: Incluir el campo que soporte el número de chip en el servicio evaluar postpago: FIN -->
+		from evaluacion where
+		ID=#value#
+	</select>
+	
+	<update id="update" parameterClass="evaluacion"> 
+		update
+		evaluacion set 
+		orden_id =#ordenId#,
+		secuencia =#secuencia#,
+		flag_error_interno =#flagErrorInterno#,
+		estado_cntLinea =#estadoCantidadLineas#,
+		estado_sec_pendiente =#estadoSecPendiente#,
+		estado_cons_previa =#estadoConsultaPrevia#,
+		tipo_operacion =#tipoOperacion#,
+		id_padre =#idPadre#,
+		estado_renovacion =#estadoRenovacion#,
+		<!-- lsoto: 19-07-19: Adición de las columnas para pintar los valores del formulario en la tabla Evaluación: INICIO -->
+		coderesponse =#codeResponse#,
+		flagcambiocampana =#flagCambioCampana#,
+		codigopreeval =#codigoPreEval#,
+		codcampana =#codCampana#,
+		codigolp =#codigoLP#,
+		cantidaddeaplicacionesrenta =#cantidadDeAplicacionesRenta#,
+		cuotainicial =#cuotaInicial#,
+		valorcuota =#valorCuota#,
+		valorequipo =#valorEquipo#,		
+		<!-- lsoto: 19-07-19: Adición de las columnas para pintar los valores del formulario en la tabla Evaluación: FIN -->
+		descripcion_cons_previa =#msgConsultaPrevia#,
+		
+		<!--lsoto: 08-08-19: Incluimos el código para mostrar los valores de cuota inicial, precio por cuota y precio total en el formulario de evluación del servicio dummy: INICIO -->
+		cuotainicial_tv =#cuotainicial_tv#,
+		valorcuota_tv =#valorcuota_tv#,
+		valorequipo_tv =#valorequipo_tv#,
+		modalidadventa =#modalidadventa#,
+		<!--lsoto: 08-08-19: Incluimos el código para mostrar los valores de cuota inicial, precio por cuota y precio total en el formulario de evluación del servicio dummy: FIN -->
+		
+		<!--lsoto: 09-08-19: Inclusión de la visualización del la lista de precios y campaña en el formulario de edición de evaluaciones: INICIO -->
+		listaprecios =#listaprecios#,
+		campania =#campania#,
+		<!--lsoto: 09-08-19: Inclusión de la visualización del la lista de precios y campaña en el formulario de edición de evaluaciones: FIN -->
+
+		<!-- lsoto: 23-09-19: Incluir el campo que soporte el número de chip en el servicio evaluar postpago: INICIO -->
+		codigomaterialchip =#codigoMaterialChip#,
+		codigoMaterialItem =#codigoMaterialItem#
+		<!-- codigomaterialchip es el nombre de la tabla, y 'codigoMaterialChip' es el nombre del atributo de la clase -->
+		<!-- lsoto: 23-09-19: Incluir el campo que soporte el número de chip en el servicio evaluar postpago: FIN -->
+
+		where ID=#id#
+	</update>
+		
+</sqlMap>

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMapConfig PUBLIC "-//iBATIS.com//DTD SQL Map Config 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-config-2.dtd">
+
+<sqlMapConfig>
+
+	<settings enhancementEnabled="true" useStatementNamespaces="true"/>
+	
+	<!--  Los map de app  --> 
+	<sqlMap resource="pe/com/claro/website/app/contextSQL/map/cliente.xml" />
+	<sqlMap resource="pe/com/claro/website/app/contextSQL/map/line.xml" />
+	<sqlMap resource="pe/com/claro/website/app/contextSQL/map/sms.xml" />
+	<sqlMap resource="pe/com/claro/website/app/contextSQL/map/parametro.xml" />
+	<sqlMap resource="pe/com/claro/website/app/contextSQL/map/evaluacion.xml" />
+	<sqlMap resource="pe/com/claro/website/app/contextSQL/map/orden.xml" />
+	<sqlMap resource="pe/com/claro/website/app/contextSQL/map/solicitud.xml" />
+	<!-- lsoto: 29-01-20 : Implementación del historial de SyncOrder por orden - INICIO --> 
+	<sqlMap resource="pe/com/claro/website/app/contextSQL/map/detalleOrden.xml" />
+	<!-- lsoto: 29-01-20 : Implementación del historial de SyncOrder por orden - INICIO --> 
+	
+	<!-- lsoto: 31-10-19 : Implementación del servicio de tope de consumo - INICIO --> 
+	<sqlMap resource="pe/com/claro/website/app/contextSQL/map/topeConsumo.xml" />
+    <!-- lsoto: 31-10-19 : Implementación del servicio de tope de consumo - FIN -->
+    
+    <!-- lsoto: 23-11-19 : Implementación del mantenimiento de planes y asociación con los topes de consumo - INICIO --> 
+	<sqlMap resource="pe/com/claro/website/app/contextSQL/map/tipoPlan.xml" />
+	<sqlMap resource="pe/com/claro/website/app/contextSQL/map/tipoPlanxTopeConsumo.xml" />
+    <!-- lsoto: 23-11-19 : Implementación del mantenimiento de planes y asociación con los topes de consumo - FIN --> 
+    
+    <!-- jcisneros_031219 : Implementación de la tabla orcomment - INICIO -->
+	<sqlMap resource="pe/com/claro/website/app/contextSQL/map/orcomment.xml" />
+    <!-- jcisneros_031219 : Implementación de la tabla orcomment - FIN -->
+	
+	<!--  Los map de la seguridad  --> 
+	<sqlMap resource="pe/com/claro/website/seguridad/contextSQL/map/usuario.xml" />
+	<sqlMap resource="pe/com/claro/website/seguridad/contextSQL/map/usuarioPerfil.xml" />
+	<sqlMap resource="pe/com/claro/website/seguridad/contextSQL/map/perfilOpcion.xml" />
+	<sqlMap resource="pe/com/claro/website/seguridad/contextSQL/map/perfil.xml" />
+	<sqlMap resource="pe/com/claro/website/seguridad/contextSQL/map/opcion.xml" />
+
+    
+</sqlMapConfig>

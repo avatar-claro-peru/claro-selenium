@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" "http://www.ibatis.com/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="Line">
+	
+    <!-- se utiliza un alias para definir la clase Domain. -->
+	<typeAlias alias="line" type="pe.com.claro.website.app.domain.Line"/>
+	
+	<!-- para traer una lista de usuarios  -->
+	<resultMap id="resultLine" class="line">
+		<result property="id" column="id" />
+		<result property="numberLine" column="numero_linea" />
+		<result property="idClient" column="id_cliente" />
+	    <result property="dateRegister" column="fecha_registro" />
+	    <result property="dateUpdate" column="fecha_actualizacion" />
+	    <result property="state" column="estado" />
+	    <result property="selltype" column="tipo_venta" />	    
+	    <result property="modality" column="modalidad" />
+	</resultMap>
+	
+	
+	<!--  PARA LOS GENERICOS -->	
+	
+	<!-- Para las funciones generales -->
+ 
+ 	<select id="listLine" resultMap="resultLine">
+ 		select * from linea where id_cliente = #idClient#
+ 	</select>
+ 	
+ 	
+ 	<select id="selectByID" resultMap="resultLine" >
+			select * from linea where numero_linea=#numberLine#
+ 	</select>
+ 	
+ 	 <update id="updateLine" parameterClass="line">
+		UPDATE
+		linea
+		SET
+		numero_linea = #numberLineNew#,
+		id_cliente = #idClient#,
+		fecha_actualizacion = #dateUpdate#,
+		estado = #state#,
+		modalidad = #modality#
+		WHERE
+		numero_linea = #numberLine#
+	</update>
+	
+	<delete id="deleteLine">
+		DELETE
+		FROM
+		linea
+		WHERE
+		numero_linea = #numberLine#
+	</delete>
+	
+	<!--  lsoto: 28-06-19: Agregar el nuevo campo en la tabla que guardará el valor del tipo de venta: INICIO -->	
+	<insert id="insertLine" parameterClass="line">
+		INSERT INTO
+		linea 
+		(id,numero_linea,id_cliente,fecha_registro,fecha_actualizacion,estado,modalidad,tipo_venta) 
+		VALUES
+		(NEXTVAL('cliente_id_seq'),#numberLine#,#idClient#,#dateRegister#,#dateUpdate#,#state#,#modality#,#selltype#)
+	</insert>
+ 	<!--  lsoto: 28-06-19: Agregar el nuevo campo en la tabla que guardará el valor del tipo de venta: INICIO -->
+ 	
+ 	<!--  lsoto: 28-06-19: Agreagamos el método para validar si el número ingreasdo existe: INICIO -->
+ 	<select id="validateLine" resultMap="resultLine" >
+		select * from linea where numero_linea=#numberLine#
+ 	</select>
+ 	<!--  lsoto: 28-06-19: Agreagamos el método para validar si el número ingreasdo existe: FIN -->
+ 	
+</sqlMap>

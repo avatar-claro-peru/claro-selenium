@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" "http://www.ibatis.com/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="DetalleOrden">
+	
+    <!-- se utiliza un alias para definir la clase Domain. -->
+	<typeAlias alias="detalleOrden" type="pe.com.claro.website.app.domain.DetalleOrden"/>
+	
+	<!-- para traer una lista de detalles de orden  -->
+	<resultMap id="resultadoDetalleOrden" class="detalleOrden">
+		<result property="id" column="id" />
+	    <result property="ordenId" column="ordenId" />
+	    <result property="estadoPrinc" column="estadoPrinc" />
+	    <result property="codMssap" column="codMssap" />
+	   	<result property="codPvu" column="codPvu" />
+	    <result property="serieChip" column="serieChip" />
+		<result property="serieEquipo" column="serieEquipo" />
+		<result property="codigoOficina" column="codigoOficina" />
+		<result property="codigoSolicitud" column="codigoSolicitud" />
+		<result property="fechaRegistro" column="fechaRegistro" />	    	    	    	    
+	</resultMap>
+	
+	<insert id="insert" parameterClass="detalleOrden"> 
+		INSERT INTO
+		detalleOrden (id, ordenId, estadoPrinc, codMssap, codPvu, serieChip, serieEquipo, codigoOficina, codigoSolicitud, fechaRegistro)
+		VALUES ( NEXTVAL('detalleorden_id_seq'),#ordenId#,#estadoPrinc#,#codMssap#,#codPvu#,#serieChip#,#serieEquipo#,#codigoOficina#,#codigoSolicitud#,#fechaRegistro#)
+	</insert>	
+	
+	<select id="selectDetalleOrdenxIDOrden" resultMap="resultadoDetalleOrden" parameterClass="java.lang.Integer">
+		select  
+		*
+		from detalleOrden
+		where ordenid = #value#
+		order by fechaRegistro DESC
+	</select>
+	 		
+</sqlMap>

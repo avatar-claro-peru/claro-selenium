@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" "http://www.ibatis.com/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="Usuario">
+	
+    <!-- se utiliza un alias para definir la clase Domain. -->
+	<typeAlias alias="usuario" type="pe.com.claro.website.seguridad.domain.Usuario"/>
+	
+	<!-- para traer una lista de usuarios  -->
+	<resultMap id="resultadoU" class="usuario">
+		<result property="id" column="id" />
+	    <result property="username" column="login" />
+	    <result property="password" column="password" />
+	    <result property="estado" column="estado" />
+	    <result property="perfiles" column="id" select="Perfil.selectUsuarioPerfil" />
+	</resultMap>
+	
+	<!--  PARA LOS GENERICOS -->	
+	<select id="list" resultMap="resultadoU" parameterClass="usuario">
+		select * from usuario
+	</select>
+	
+	<insert id="insert" parameterClass="usuario"> 
+		INSERT INTO
+		usuario (ID, login, password, estado)
+		VALUES ( NEXTVAL('usuario_id_seq'),#username#,#password#,'1')
+	</insert>
+	
+	<select id="selectByID" resultMap="resultadoU">
+ 		select * from usuario where ID=#id#
+ 	</select>
+	
+	<update id="update" parameterClass="usuario">
+		UPDATE
+		usuario
+		SET
+		ID = #id#,
+		login = #username#,
+		estado = #estado#,
+		password= #password#
+		WHERE
+		id = #id#
+	</update>
+	
+	<delete id="delete">
+		DELETE
+		FROM
+		usuario
+		WHERE
+		id = #id#
+	</delete>
+	
+	<!-- PARA LOS NO GENERICOS -->
+ 
+ 	<select id="listForName" parameterClass="usuario"  resultMap="resultadoU">
+ 		select * from usuario where login = #username#
+ 	</select>
+ 	
+ 	
+ 	
+</sqlMap>

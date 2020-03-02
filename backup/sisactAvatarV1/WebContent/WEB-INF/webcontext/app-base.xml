@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:util="http://www.springframework.org/schema/util"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation="
+http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.0.xsd
+http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-2.0.xsd
+http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.0.xsd
+http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-2.0.xsd">
+
+
+<!--/////////////////////////////////////////////////////////////////////////-->
+<!--                               PROPERTIES                                -->
+<!--/////////////////////////////////////////////////////////////////////////-->
+	<bean id="propertyConfigurer"
+			class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+		<property name="locations">
+			<list>
+				<value>/WEB-INF/jdbc.properties</value>
+			</list>
+		</property>
+	</bean>
+	
+<!--/////////////////////////////////////////////////////////////////////////-->
+<!--                            JDBC CONFIGURATION                           -->
+<!--/////////////////////////////////////////////////////////////////////////-->
+	<bean id="dataSource"
+			class="org.springframework.jdbc.datasource.DriverManagerDataSource" >
+		<property name="driverClassName" value="${jdbc.driverClassName}"/>
+		<property name="url"             value="${jdbc.url}"/>
+		<property name="username"        value="${jdbc.username}"/>
+		<property name="password"        value="${jdbc.password}"/>
+	</bean>
+
+<!--/////////////////////////////////////////////////////////////////////////-->
+<!--                            JDBC JNDI		                             -->
+<!--/////////////////////////////////////////////////////////////////////////-->
+
+<!--		
+	<bean id="dataSource" class="org.springframework.jndi.JndiObjectFactoryBean" scope="singleton">
+		<property name="jndiName" value="java:comp/env/jdbc/pcmDB" />
+		<property name="resourceRef" value="true" />
+	</bean>	
+-->
+
+<!--/////////////////////////////////////////////////////////////////////////-->
+<!--                               MESSAGES                                  -->
+<!--/////////////////////////////////////////////////////////////////////////-->
+	<bean id="messageSource"
+			class="org.springframework.context.support.ResourceBundleMessageSource">
+		<property name="basenames">
+			<list>
+				<value>messages</value>
+			</list>
+		</property>
+        <property name="useCodeAsDefaultMessage" value="true"/>
+	</bean>
+
+</beans>

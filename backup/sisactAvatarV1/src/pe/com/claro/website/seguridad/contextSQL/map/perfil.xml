@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" "http://www.ibatis.com/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="Perfil">
+	
+   <!-- se utiliza un alias para definir la clase Domain. -->
+	<typeAlias alias="perfil" type="pe.com.claro.website.seguridad.domain.Perfil"/>
+	
+   
+	<resultMap id="resultadoP" class="perfil">
+		<result property="id" column="id" />
+	    <result property="nombre" column="nombre" />
+	    <result property="descripcion" column="descripcion" />
+	    <result property="estado" column="estado" />
+	    <result  property="opciones" column="id" select="Opcion.selectPerfilOpcion"/>
+	</resultMap>
+ 
+ 	<!--  PARA LOS GENERICOS -->	
+	<select id="list" resultMap="resultadoP" parameterClass="perfil">
+		select * from perfil
+	</select>
+	
+	<insert id="insert" parameterClass="perfil"> 
+		INSERT INTO
+		perfil (ID, nombre, descripcion,estado)
+		VALUES ( NEXTVAL('perfil_id_seq'),#nombre#,#descripcion#,#estado#)
+	</insert>
+	
+	<select id="selectByID" resultMap="resultadoP">
+ 		select * from perfil where ID=#id#
+ 	</select>
+	<update id="update" parameterClass="perfil">
+		UPDATE
+		perfil
+		SET
+		ID = #id#,
+		nombre = #nombre#,
+		descripcion = #descripcion#,
+		estado = #estado#
+		WHERE
+		id = #id#
+	</update>
+	<delete id="delete">
+		DELETE
+		FROM
+		perfil
+		WHERE
+		id = #id#
+	</delete>
+	
+ 	<select id="selectUsuarioPerfil" parameterClass="java.lang.Integer" resultMap="resultadoP">
+		select * from perfil where id in (select perfil_id from usuario_perfil where usuario_id = #value# )
+	</select>
+
+
+</sqlMap>

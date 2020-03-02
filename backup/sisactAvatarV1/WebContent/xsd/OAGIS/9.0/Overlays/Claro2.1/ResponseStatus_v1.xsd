@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+	xmlns="http://claro.com.pe/esb/data/bss/generico/responseStatus/v1/"
+	xmlns:tns="http://claro.com.pe/esb/data/bss/generico/responseStatus/v1/"
+	targetNamespace="http://claro.com.pe/esb/data/bss/generico/responseStatus/v1/"
+	elementFormDefault="qualified">
+
+	<xsd:complexType name="ResponseStatus">
+		<xsd:sequence>
+			<xsd:element name="estado" type="xsd:int" minOccurs="1"
+				maxOccurs="1" />
+			<xsd:element name="codigoRespuesta" type="xsd:string"
+				minOccurs="1" maxOccurs="1" />
+			<xsd:element name="descripcionRespuesta" type="xsd:string"
+				minOccurs="1" maxOccurs="1" />
+			<xsd:element name="ubicacionError" type="xsd:string"
+				minOccurs="1" maxOccurs="1" />
+			<xsd:element name="fecha" type="xsd:dateTime" minOccurs="1"
+				maxOccurs="1" />
+			<xsd:element name="origen" type="xsd:string" minOccurs="1"
+				maxOccurs="1" />
+		</xsd:sequence>
+	</xsd:complexType>
+
+</xsd:schema>

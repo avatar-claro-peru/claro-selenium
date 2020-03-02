@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<wsdl:definitions name="BSS_ClaroStockLoad_v1"
+	targetNamespace="http://claro.com.pe/esb/BSS_ClaroStockLoad/v1/"
+	xmlns:soap11="http://schemas.xmlsoap.org/wsdl/soap/"
+	xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/"
+	xmlns:ef="http://claro.com.pe/esb/data/bss/generico/claroFault/v1/"
+	xmlns:he="http://claro.com.pe/esb/data/bss/generico/claroGenericHeader/v1/"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+    xmlns:client="http://claro.com.pe/esb/BSS_ClaroStockLoad/v1/"
+	xmlns:ns1="http://claro.com.pe/esb/data/bss/CheckStockProcess/"
+	xmlns:ns2="http://claro.com.pe/esb/data/bss/ExecuteStockProcess/"
+	xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns="http://schemas.xmlsoap.org/wsdl/">
+	
+	<types>
+	    <xsd:schema xmlns:soap11="http://schemas.xmlsoap.org/wsdl/soap/"
+	                xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/"
+	                xmlns:ef="http://claro.com.pe/esb/data/bss/generico/claroFault/v1/"
+	                xmlns:he="http://claro.com.pe/esb/data/bss/generico/claroGenericHeader/v1/"
+	                xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+	                xmlns:client="http://claro.com.pe/esb/BSS_ClaroStockLoad/v1/"
+	                xmlns:ns1="http://claro.com.pe/esb/data/bss/CheckStockProcess/"
+	                xmlns:ns2="http://claro.com.pe/esb/data/bss/ExecuteStockProcess/"
+	                xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/">
+	      <xsd:import schemaLocation="../../xsd/OAGIS/9.0/Overlays/Claro2.1/CheckStockProcess.xsd"
+	                  namespace="http://claro.com.pe/esb/data/bss/CheckStockProcess/"/>
+	      <xsd:import schemaLocation="../../xsd/OAGIS/9.0/Overlays/Claro2.1/ExecuteStockProcess.xsd"
+	                  namespace="http://claro.com.pe/esb/data/bss/ExecuteStockProcess/"/>
+	      <xsd:import schemaLocation="../../xsd/OAGIS/9.0/Overlays/Claro2.1/ClaroFault_v1.xsd"
+	                  namespace="http://claro.com.pe/esb/data/bss/generico/claroFault/v1/"/>
+	      <xsd:import schemaLocation="../../xsd/OAGIS/9.0/Overlays/Claro2.1/ClaroGenericHeaders_v1.xsd"
+	                  namespace="http://claro.com.pe/esb/data/bss/generico/claroGenericHeader/v1/"/>
+	    </xsd:schema>
+  	</types>
+  	
+	<message name="CheckProcessRequestMessage">
+	   <part name="CheckProcessRequest" element="ns1:CheckProcessRequest"/>
+	</message>
+	<message name="CheckProcessResponseMessage">
+	   <part name="CheckProcessResponse" element="ns1:CheckProcessResponse"/>
+	</message>
+	<message name="ExecuteProcessRequestMessage">
+	   <part name="ExecuteProcessRequest" element="ns2:ExecuteProcessRequest"/>
+	</message>
+	<message name="ExecuteProcessResponseMessage">
+	   <part name="ExecuteProcessResponse" element="ns2:ExecuteProcessResponse"/>
+	</message>
+	<message name="claroFault">
+	   <part name="claroFault" element="ef:claroFault"/>
+	</message>
+	<message name="headerRequest">
+	   <part name="headerRequest" element="he:headerRequest"/>
+	</message>
+	<message name="headerResponse">
+	   <part name="headerResponse" element="he:headerResponse"/>
+	</message>
+	
+	
+	<portType name="BSS_ClaroStockLoad_port">
+	  <operation name="checkStockLoad">
+	    <input message="client:CheckProcessRequestMessage"/>
+	    <output message="client:CheckProcessResponseMessage"/>
+	    <fault name="claroFault" message="client:claroFault"/>
+	  </operation>
+	  <operation name="executeStockLoad">
+	    <input message="client:ExecuteProcessRequestMessage"/>
+	    <output message="client:ExecuteProcessResponseMessage"/>
+	    <fault name="claroFault" message="client:claroFault"/>
+	  </operation>
+	</portType>
+  	
+  	
+  	<binding name="BSS_ClaroStockLoad_SOAP11Binding" type="client:BSS_ClaroStockLoad_port">
+	    <soap11:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+	    <operation name="checkStockLoad">
+	      <soap11:operation style="document" soapAction="http://claro.com.pe/esb/BSS_ClaroStockLoad/v1/checkStockLoad"/>
+	      <input>
+	        <soap11:header message="client:headerRequest" part="headerRequest" use="literal"/>
+	        <soap11:body use="literal" parts="CheckProcessRequest"/>
+	      </input>
+	      <output>
+	        <soap11:header message="client:headerResponse" part="headerResponse" use="literal"/>
+	        <soap11:body use="literal" parts="CheckProcessResponse"/>
+	      </output>
+	      <fault name="claroFault">
+	        <soap11:fault name="claroFault" use="literal"/>
+	      </fault>
+	    </operation>
+	    <operation name="executeStockLoad">
+	      <soap11:operation style="document" soapAction="http://claro.com.pe/esb/BSS_ClaroStockLoad/v1/executeStockLoad"/>
+	      <input>
+	        <soap11:header message="client:headerRequest" part="headerRequest" use="literal"/>
+	        <soap11:body use="literal" parts="ExecuteProcessRequest"/>
+	      </input>
+	      <output>
+	        <soap11:header message="client:headerResponse" part="headerResponse" use="literal"/>
+	        <soap11:body use="literal" parts="ExecuteProcessResponse"/>
+	      </output>
+	      <fault name="claroFault">
+	        <soap11:fault name="claroFault" use="literal"/>
+	      </fault>
+	    </operation>
+    </binding>
+ 	
+    
+    <service name="BSS_ClaroStockLoad_v1">
+	    <port name="BSS_ClaroStockLoad_SB11" binding="client:BSS_ClaroStockLoad_SOAP11Binding">
+	      <soap11:address location="http://localhost/webapp/wcs/services/BSS_ClaroStockLoad_SB11"/>
+	    </port>
+  	</service>
+	
+
+</wsdl:definitions>

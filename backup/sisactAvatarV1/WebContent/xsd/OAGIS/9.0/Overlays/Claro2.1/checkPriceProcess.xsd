@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema targetNamespace="http://claro.com.pe/esb/data/bss/checkPriceProcessStatus"
+	elementFormDefault="qualified" xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+	xmlns:tns="http://claro.com.pe/esb/data/bss/checkPriceProcessStatus"
+	xmlns:xsd1="http://claro.com.pe/esb/data/bss/generico/opcionales/v1/"
+	xmlns:xsd2="http://claro.com.pe/esb/data/bss/generico/responseStatus/v1/"
+	xmlns:xsd3="http://claro.com.pe/esb/data/bss/generico/responseData/v1/">
+
+	<xsd:import schemaLocation="Opcionales_v1.xsd"
+		namespace="http://claro.com.pe/esb/data/bss/generico/opcionales/v1/">
+	</xsd:import>
+	<xsd:import schemaLocation="ResponseStatus_v1.xsd"
+		namespace="http://claro.com.pe/esb/data/bss/generico/responseStatus/v1/">
+	</xsd:import>
+	<xsd:import schemaLocation="ResponseData_v1.xsd" 
+		namespace="http://claro.com.pe/esb/data/bss/generico/responseData/v1/">
+	</xsd:import>
+	<xsd:element name="checkPriceProcessRequest"
+		type="tns:checkPriceProcessRequest">
+	</xsd:element>
+
+	<xsd:element name="checkPriceProcessResponse"
+		type="tns:checkPriceProcessResponse">
+	</xsd:element>
+
+	<xsd:complexType name="checkPriceProcessRequest">
+		<xsd:sequence>
+			<xsd:element name="user" type="xsd:string" maxOccurs="1"
+				minOccurs="1">
+			</xsd:element>
+			<xsd:element name="password" type="xsd:string" maxOccurs="1"
+				minOccurs="1">
+			</xsd:element>
+			<xsd:element name="listaRequestOpcional" type="xsd1:RequestOpcionalType"
+				maxOccurs="1" minOccurs="0">
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+
+	<xsd:complexType name="checkPriceProcessResponse">
+		<xsd:sequence>
+			<xsd:element name="responseStatus"
+				type="xsd2:ResponseStatus" maxOccurs="1" minOccurs="1">
+			</xsd:element>
+			<xsd:element name="responseData" type="xsd3:ResponseData" maxOccurs="1" minOccurs="1"></xsd:element>
+			<xsd:element name="listaResponseOpcional" type="xsd1:ResponseOpcionalType" maxOccurs="1" minOccurs="0"></xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+</xsd:schema>
