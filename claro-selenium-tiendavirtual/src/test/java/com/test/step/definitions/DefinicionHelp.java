@@ -15,6 +15,7 @@ public class DefinicionHelp {
 	@Given("^el usuario ingreso a la pagina \"([^\"]*)\"$")
 	public void el_usuario_ingreso_a_la_pagina(String url) throws Throwable {
 		driver.get(url);
+		Thread.sleep(10000);
 	}
 
 }
